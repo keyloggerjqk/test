@@ -1,0 +1,76 @@
+<!doctype html>
+<html lang="vi">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="Theo dõi tiến độ đơn hàng tại bàn - MenuMind.">
+    <title>Theo dõi đơn · MenuMind</title>
+    <link rel="stylesheet" href="../css/common.css">
+    <link rel="stylesheet" href="../css/header.css">
+    <link rel="stylesheet" href="../css/diner-order-status.css">
+    <script src="../js/database.js" defer></script>
+    <script src="../js/common.js" defer></script>
+    <script src="../js/header.js" defer></script>
+    <script src="../js/diner-cart.js" defer></script>
+    <script src="../js/diner-order-status.js" defer></script>
+</head>
+
+<body data-root=".." data-page="status" data-title="Theo dõi đơn">
+    <header class="site-header">
+        <a class="skip-link" href="#main-content">Bỏ qua điều hướng</a>
+        <div class="brand"><span class="brand-mark" aria-hidden="true">M</span><span>MenuMind</span></div>
+        <button class="nav-toggle" type="button" aria-expanded="false" aria-controls="global-nav">
+            <span aria-hidden="true">☰</span>
+            <span class="sr-only">Mở điều hướng</span>
+        </button>
+        <nav id="global-nav" class="global-nav" aria-label="Điều hướng chính">
+            <a href="../index.html#qr-order">Gọi món bằng QR</a>
+            <a href="diner-order-status.html">Theo dõi đơn</a>
+            <a href="login.html">Khu vực nhân viên</a>
+        </nav>
+        <a class="role-pill" href="login.html" aria-label="Đổi vai trò"><span class="pulse-dot"></span>Bàn A01</a>
+    </header>
+
+    <main id="main-content" class="site-main">
+        <div id="status-content-wrapper">
+            <header class="page-head">
+                <div>
+                    <p class="kicker" id="status-kicker">Bàn A01</p>
+                    <h1>Theo dõi tất cả lần gọi món</h1>
+                    <p id="status-desc">Đơn thuộc phiên QR hiện tại. Mỗi lần gọi món được theo dõi riêng.</p>
+                </div>
+                <div class="head-actions" id="status-head-actions">
+                    <a class="button primary" href="diner-menu.html">+ Gọi thêm món</a>
+                    <button class="button quiet" data-action="refresh-status">↻ Cập nhật</button>
+                </div>
+            </header>
+
+            <section class="metric-strip" id="status-metrics">
+                <div><span>Tổng lần gọi</span><strong id="metric-orders">0</strong></div>
+                <div><span>Đơn đang xử lý</span><strong id="metric-open">0</strong></div>
+                <div><span>Đã phục vụ</span><strong id="metric-served">0</strong></div>
+                <div><span>Tổng số món</span><strong id="metric-items">0</strong></div>
+            </section>
+
+            <div class="content-grid wide-right">
+                <section class="session-order-list" id="session-order-list">
+                    <!-- Danh sách các lần gọi món -->
+                </section>
+                <aside class="checkout-sidebar">
+                    <div id="payment-panel-container">
+                        <!-- Khung thanh toán -->
+                    </div>
+                    <div id="feedback-area" aria-live="polite"></div>
+                </aside>
+            </div>
+        </div>
+    </main>
+
+    <footer class="site-footer">
+        <span>MenuMind · vận hành thông minh, phục vụ có nhịp</span>
+        <span>Hệ thống vận hành nhà hàng</span>
+    </footer>
+</body>
+
+</html>

@@ -1,0 +1,164 @@
+<!doctype html>
+<html lang="vi">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="Cài đặt hệ thống nhà hàng - MenuMind.">
+    <title>Cài đặt · MenuMind</title>
+    <link rel="stylesheet" href="../css/common.css">
+    <link rel="stylesheet" href="../css/header.css">
+    <link rel="stylesheet" href="../css/admin-settings.css">
+    <script src="../js/database.js" defer></script>
+    <script src="../js/common.js" defer></script>
+    <script src="../js/header.js" defer></script>
+    <script src="../js/admin-settings.js" defer></script>
+</head>
+
+<body data-root=".." data-page="admin-settings" data-title="Cài đặt">
+<!-- ==========================================================================
+     PHÂN VÙNG GIAO DIỆN - CÀI ĐẶT HỆ THỐNG NHÀ HÀNG (S16)
+     • VÙNG 1: Header hệ thống & Điều hướng bên (Sidebar Navigation)
+     • VÙNG 2: Tiêu đề trang Cài đặt hệ thống
+     • VÙNG 3: Cấu hình thông tin nhà hàng (Tên, Số điện thoại, Tiền tệ)
+     • VÙNG 4: Tùy chọn vận hành & Giao diện (Cảnh báo trễ món, Tương phản cao)
+     • VÙNG 5: Hành động lưu & Vùng nguy hiểm (Danger Zone - Khôi phục mặc định)
+========================================================================== -->
+
+    <!-- ====================================================================== -->
+    <!-- VÙNG 1: HEADER HỆ THỐNG & ĐIỀU HƯỚNG TỔNG QUAN                         -->
+    <!-- ====================================================================== -->
+    <header class="site-header">
+        <a class="skip-link" href="#main-content">Bỏ qua điều hướng</a>
+        <div class="brand"><span class="brand-mark" aria-hidden="true">M</span><span>MenuMind</span></div>
+        <button class="nav-toggle" type="button" aria-expanded="false" aria-controls="global-nav">
+            <span aria-hidden="true">☰</span>
+            <span class="sr-only">Mở điều hướng</span>
+        </button>
+        <nav id="global-nav" class="global-nav" aria-label="Điều hướng chính">
+            <a href="../index.html#qr-order">Gọi món bằng QR</a>
+            <a href="diner-order-status.html">Theo dõi đơn</a>
+            <a href="login.html">Khu vực nhân viên</a>
+        </nav>
+        <a class="role-pill" href="login.html" aria-label="Đổi vai trò"><span class="pulse-dot"></span>Quản trị</a>
+    </header>
+
+    <div class="page-frame">
+        <aside>
+            <nav class="side-nav" aria-label="Điều hướng admin">
+                <p>Không gian làm việc</p>
+                <a href="admin-user-management.html"><span aria-hidden="true">□</span>Tài khoản</a>
+                <a href="manager-payment-requests.html"><span aria-hidden="true">□</span>Thanh toán</a>
+                <a href="admin-sales-insights.html"><span aria-hidden="true">□</span>Bán hàng</a>
+                <a href="manager-feedback-center.html"><span aria-hidden="true">□</span>Phản hồi</a>
+                <a class="active" href="admin-settings.html"><span aria-hidden="true">□</span>Cài đặt</a>
+                <a href="login.html"><span aria-hidden="true">↗</span>Đổi vai trò</a>
+            </nav>
+        </aside>
+
+        <main id="main-content" class="site-main">
+            <!-- ============================================================== -->
+            <!-- VÙNG 2: TIÊU ĐỀ TRANG CÀI ĐẶT                                  -->
+            <!-- ============================================================== -->
+            <header class="page-head">
+                <div>
+                    <p class="kicker">Cấu hình dùng chung</p>
+                    <h1>Cài đặt hệ thống</h1>
+                    <p>Thay đổi ở đây áp dụng cho toàn bộ hoạt động nhà hàng và được lưu trên trình duyệt.</p>
+                </div>
+            </header>
+
+            <form id="settings-form" class="settings-layout" novalidate>
+                <!-- ========================================================== -->
+                <!-- VÙNG 3: HỒ SƠ THÔNG TIN NHÀ HÀNG (RESTAURANT PROFILE)      -->
+                <!-- Chức năng: Nhập tên quán, hotline hỗ trợ, đơn vị tiền tệ   -->
+                <!-- ========================================================== -->
+                <section class="surface">
+                    <p class="kicker">Thông tin nhà hàng</p>
+                    <h2>Hồ sơ hiển thị</h2>
+                    <div class="form-field">
+                        <label for="setting-name">Tên nhà hàng <span class="required" aria-hidden="true">*</span></label>
+                        <input name="name" id="setting-name" minlength="3" placeholder="Nhập tên nhà hàng" required aria-describedby="err-setting-name">
+                        <span class="field-error" id="err-setting-name" role="alert"></span>
+                    </div>
+                    <div class="form-field">
+                        <label for="setting-phone">Số điện thoại liên hệ <span class="required" aria-hidden="true">*</span></label>
+                        <input name="phone" id="setting-phone" type="tel" placeholder="Ví dụ: 024 7300 1220" required aria-describedby="err-setting-phone">
+                        <span class="field-error" id="err-setting-phone" role="alert"></span>
+                    </div>
+                    <div class="form-field">
+                        <label for="setting-currency">Đơn vị tiền tệ</label>
+                        <select name="currency" id="setting-currency">
+                            <option value="VND">VND · Việt Nam đồng (₫)</option>
+                            <option value="USD">USD · Đô la Mỹ ($)</option>
+                        </select>
+                    </div>
+                </section>
+
+                <!-- ========================================================== -->
+                <!-- VÙNG 4: TÙY CHỌN VẬN HÀNH & GIAO DIỆN (SYSTEM PREFERENCES) -->
+                <!-- Chức năng: Bật cảnh báo trễ, đặt phút, xem trước tương phản-->
+                <!-- ========================================================== -->
+                <section class="surface">
+                    <p class="kicker">Vận hành & Hiển thị</p>
+                    <h2>Thông báo và giao diện</h2>
+                    <label class="switch-row" for="setting-alerts">
+                        <span>
+                            <strong>Cảnh báo đơn chờ lâu</strong>
+                            <small>Bật còi / thông báo khi đơn chế biến vượt thời gian chuẩn.</small>
+                        </span>
+                        <input name="alerts" id="setting-alerts" type="checkbox" checked>
+                    </label>
+
+                    <div class="form-field">
+                        <label for="setting-alert-time">Thời gian chờ cảnh báo (phút)</label>
+                        <input name="alertTime" id="setting-alert-time" type="number" min="5" max="60" value="15" aria-describedby="err-setting-alert-time">
+                        <span class="field-error" id="err-setting-alert-time" role="alert"></span>
+                    </div>
+
+                    <label class="switch-row" for="setting-dark">
+                        <span>
+                            <strong>Chế độ tương phản cao</strong>
+                            <small>Tối ưu hiển thị cho môi trường bếp và thiếu sáng.</small>
+                        </span>
+                        <input name="dark" id="setting-dark" type="checkbox">
+                    </label>
+
+                    <div class="form-field">
+                        <label for="setting-lang">Ngôn ngữ hệ thống</label>
+                        <select name="language" id="setting-lang">
+                            <option value="vi">Tiếng Việt</option>
+                            <option value="en">English</option>
+                        </select>
+                    </div>
+                </section>
+
+                <!-- ========================================================== -->
+                <!-- VÙNG 5: HÀNH ĐỘNG LƯU & VÙNG NGUY HIỂM (DANGER ZONE)        -->
+                <!-- Chức năng: Lưu cấu hình & Khôi phục mặc định với xác nhận   -->
+                <!-- ========================================================== -->
+                <div class="settings-actions">
+                    <button class="button primary" id="btn-save-settings" type="submit">Lưu cài đặt</button>
+                </div>
+
+                <section class="surface danger-zone">
+                    <div class="section-title compact">
+                        <div>
+                            <p class="kicker">Vùng nguy hiểm</p>
+                            <h2>Khôi phục mặc định ban đầu</h2>
+                            <p class="fine-print">Thao tác này sẽ đặt lại tên nhà hàng, số điện thoại và toàn bộ tùy chọn hiển thị về giá trị ban đầu của hệ thống.</p>
+                        </div>
+                        <button type="button" class="button quiet danger-text" id="btn-reset-defaults">Đặt lại toàn bộ</button>
+                    </div>
+                </section>
+            </form>
+        </main>
+    </div>
+
+    <footer class="site-footer">
+        <span>MenuMind · vận hành thông minh, phục vụ có nhịp</span>
+        <span>Hệ thống vận hành nhà hàng</span>
+    </footer>
+</body>
+
+</html>

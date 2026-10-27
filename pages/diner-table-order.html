@@ -1,0 +1,87 @@
+<!doctype html>
+<html lang="vi">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="Kiểm tra đơn gọi món tại bàn - MenuMind.">
+    <title>Giỏ món · MenuMind</title>
+    <link rel="stylesheet" href="../css/common.css">
+    <link rel="stylesheet" href="../css/header.css">
+    <link rel="stylesheet" href="../css/diner-table-order.css">
+    <script src="../js/database.js" defer></script>
+    <script src="../js/common.js" defer></script>
+    <script src="../js/header.js" defer></script>
+    <script src="../js/diner-cart.js" defer></script>
+    <script src="../js/diner-table-order.js" defer></script>
+</head>
+
+<body data-root=".." data-page="cart" data-title="Giỏ món">
+    <header class="site-header">
+        <a class="skip-link" href="#main-content">Bỏ qua điều hướng</a>
+        <div class="brand"><span class="brand-mark" aria-hidden="true">M</span><span>MenuMind</span></div>
+        <button class="nav-toggle" type="button" aria-expanded="false" aria-controls="global-nav">
+            <span aria-hidden="true">☰</span>
+            <span class="sr-only">Mở điều hướng</span>
+        </button>
+        <nav id="global-nav" class="global-nav" aria-label="Điều hướng chính">
+            <a href="../index.html#qr-order">Gọi món bằng QR</a>
+            <a href="diner-order-status.html">Theo dõi đơn</a>
+            <a href="login.html">Khu vực nhân viên</a>
+        </nav>
+        <a class="role-pill" href="login.html" aria-label="Đổi vai trò"><span class="pulse-dot"></span>Bàn A01</a>
+    </header>
+
+    <main id="main-content" class="site-main">
+        <header class="page-head">
+            <div>
+                <p class="kicker" id="cart-kicker">Bàn A01</p>
+                <h1>Kiểm tra đơn trước khi gửi</h1>
+                <p id="cart-subtitle">Bạn vẫn có thể thay đổi số lượng, ghi chú hoặc bỏ món.</p>
+            </div>
+            <div class="head-actions" id="cart-head-actions">
+                <a class="button quiet" href="diner-menu.html">+ Thêm món</a>
+            </div>
+        </header>
+
+        <div id="cart-content-wrapper">
+            <div class="checkout-layout">
+                <section class="cart-list" id="cart-list" aria-label="Các món đã chọn">
+                    <!-- Danh sách món trong giỏ hàng -->
+                </section>
+
+                <aside class="bill-panel">
+                    <p class="kicker">Tóm tắt đơn</p>
+                    <h2 id="cart-summary-title">0 món · Bàn A01</h2>
+                    <dl>
+                        <div>
+                            <dt>Tạm tính</dt>
+                            <dd id="subtotal-val">0 ₫</dd>
+                        </div>
+                        <div>
+                            <dt>Phí phục vụ (5%)</dt>
+                            <dd id="service-fee-val">0 ₫</dd>
+                        </div>
+                        <div class="total">
+                            <dt>Tổng cộng</dt>
+                            <dd id="total-val">0 ₫</dd>
+                        </div>
+                    </dl>
+                    <div id="order-lock-notice" hidden></div>
+                    <label class="check">
+                        <input id="confirm-order" type="checkbox">Tôi đã kiểm tra món và các ghi chú
+                    </label>
+                    <button id="submit-order" class="button primary full" disabled>Gửi đơn đến bếp</button>
+                    <p class="fine-print">Thời gian dự kiến sẽ được cập nhật sau khi bếp nhận đơn.</p>
+                </aside>
+            </div>
+        </div>
+    </main>
+
+    <footer class="site-footer">
+        <span>MenuMind · vận hành thông minh, phục vụ có nhịp</span>
+        <span>Hệ thống vận hành nhà hàng</span>
+    </footer>
+</body>
+
+</html>

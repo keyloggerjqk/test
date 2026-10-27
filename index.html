@@ -1,0 +1,96 @@
+<!doctype html>
+<html lang="vi">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="MenuMind - thực đơn thông minh và điều phối đơn hàng nhà hàng.">
+    <title>MenuMind · Thực đơn thông minh</title>
+    <link rel="stylesheet" href="css/common.css">
+    <link rel="stylesheet" href="css/header.css">
+    <link rel="stylesheet" href="css/index.css">
+    <script src="js/database.js" defer></script>
+    <script src="js/common.js" defer></script>
+    <script src="js/header.js" defer></script>
+    <script src="js/index.js" defer></script>
+</head>
+
+<body data-root="." data-page="home" data-title="Trang chủ">
+    <header class="site-header">
+        <a class="skip-link" href="#main-content">Bỏ qua điều hướng</a>
+        <div class="brand"><span class="brand-mark" aria-hidden="true">M</span><span>MenuMind</span></div>
+        <button class="nav-toggle" type="button" aria-expanded="false" aria-controls="global-nav">
+            <span aria-hidden="true">☰</span>
+            <span class="sr-only">Mở điều hướng</span>
+        </button>
+        <nav id="global-nav" class="global-nav" aria-label="Điều hướng chính">
+            <a href="#qr-order">Gọi món bằng QR</a>
+            <a href="pages/diner-order-status.html">Theo dõi đơn</a>
+            <a href="pages/login.html">Khu vực nhân viên</a>
+        </nav>
+        <a class="role-pill" href="pages/login.html" aria-label="Đổi vai trò"><span class="pulse-dot"></span>Menu QR</a>
+    </header>
+
+    <main id="main-content" class="site-main">
+        <section class="hero-grid">
+            <div class="hero-copy">
+                <p class="kicker">Thực đơn biết lắng nghe</p>
+                <h1>Quét QR tại bàn.<br>Gọi món đúng nhịp.</h1>
+                <p>Mỗi lượt dùng bàn có một mã QR riêng. Mã tự hết hiệu lực khi nhân viên kết thúc phiên, giúp đơn hàng luôn gắn đúng bàn và đúng lượt khách.</p>
+                <div class="hero-actions">
+                    <a class="button primary" href="#qr-order">Cách gọi món</a>
+                    <a class="button quiet" href="pages/login.html">Đăng nhập nhân viên</a>
+                </div>
+                <dl class="quick-facts">
+                    <div>
+                        <dt>1 mã</dt>
+                        <dd>cho mỗi lượt dùng bàn</dd>
+                    </div>
+                    <div>
+                        <dt>8 giờ</dt>
+                        <dd>thời hạn tối đa</dd>
+                    </div>
+                    <div>
+                        <dt>An toàn</dt>
+                        <dd>xác thực trên máy chủ</dd>
+                    </div>
+                </dl>
+            </div>
+            <div class="service-pulse" aria-label="Minh họa nhịp phục vụ">
+                <div class="plate"><span>🍊</span><i></i></div>
+                <div class="pulse-card top">
+                    <span class="pulse-dot"></span>
+                    <strong>Bếp đang ổn định</strong>
+                    <small>8 đơn · 74% công suất</small>
+                </div>
+                <div class="pulse-card bottom">
+                    <strong>Món hợp gu hôm nay</strong>
+                    <small>Cá hồi sốt quýt · 96%</small>
+                </div>
+            </div>
+        </section>
+
+        <section class="table-section" id="qr-order">
+            <div class="section-title">
+                <div>
+                    <p class="kicker">Gọi món tại bàn</p>
+                    <h2>Quét mã QR được cấp cho lượt ăn này</h2>
+                </div>
+                <p>Không cần nhập mã bàn thủ công. Quý khách chỉ cần dùng điện thoại quét mã QR được đặt sẵn trên bàn để mở thực đơn và gọi món trực tiếp.</p>
+            </div>
+            <div class="metric-strip">
+                <div><span>Bước 1</span><strong>Ngồi đúng bàn</strong></div>
+                <div><span>Bước 2</span><strong>Quét QR</strong></div>
+                <div><span>Bước 3</span><strong>Chọn món</strong></div>
+                <div><span>Bước 4</span><strong>Gửi bếp</strong></div>
+            </div>
+        </section>
+    </main>
+
+    <footer class="site-footer">
+        <span>MenuMind · vận hành thông minh, phục vụ có nhịp</span>
+        <span>Hệ thống vận hành nhà hàng</span>
+    </footer>
+</body>
+
+</html>

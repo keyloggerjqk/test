@@ -1,0 +1,106 @@
+<!doctype html>
+<html lang="vi">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="Bảng điều phối đơn bếp nhà hàng - MenuMind.">
+    <title>Bảng đơn bếp · MenuMind</title>
+    <link rel="stylesheet" href="../css/common.css">
+    <link rel="stylesheet" href="../css/header.css">
+    <link rel="stylesheet" href="../css/kitchen-board.css">
+    <script src="../js/database.js" defer></script>
+    <script src="../js/common.js" defer></script>
+    <script src="../js/header.js" defer></script>
+    <script src="../js/kitchen-board.js" defer></script>
+</head>
+
+<body data-root=".." data-page="kitchen-board" data-title="Bảng đơn bếp">
+    <header class="site-header">
+        <a class="skip-link" href="#main-content">Bỏ qua điều hướng</a>
+        <div class="brand"><span class="brand-mark" aria-hidden="true">M</span><span>MenuMind</span></div>
+        <button class="nav-toggle" type="button" aria-expanded="false" aria-controls="global-nav">
+            <span aria-hidden="true">☰</span>
+            <span class="sr-only">Mở điều hướng</span>
+        </button>
+        <nav id="global-nav" class="global-nav" aria-label="Điều hướng chính">
+            <a href="../index.html#qr-order">Gọi món bằng QR</a>
+            <a href="diner-order-status.html">Theo dõi đơn</a>
+            <a href="login.html">Khu vực nhân viên</a>
+        </nav>
+        <a class="role-pill" href="login.html" aria-label="Đổi vai trò"><span class="pulse-dot"></span>Bếp nóng</a>
+    </header>
+
+    <div class="page-frame">
+        <aside>
+        <nav class="side-nav" aria-label="Điều hướng kitchen">
+            <p>Không gian làm việc</p>
+            <a class="active" href="kitchen-board.html"><span aria-hidden="true">⌁</span>Bảng đơn</a>
+            <a href="kitchen-order-detail.html"><span aria-hidden="true">⌁</span>Chi tiết đơn</a>
+            <a href="kitchen-wait-time-alerts.html"><span aria-hidden="true">⌁</span>Cảnh báo chờ</a>
+            <a href="login.html"><span aria-hidden="true">↗</span>Đổi vai trò</a>
+        </nav>
+    </aside>
+
+    <main id="main-content" class="site-main">
+        <div id="kitchen-board-wrapper">
+            <header class="page-head">
+                <div>
+                    <p class="kicker">Hàng đợi trực tiếp</p>
+                    <h1>Bảng điều phối bếp</h1>
+                    <p>Đơn ưu tiên và chưa chế biến nằm trên cùng. Đơn hoàn tất được chuyển xuống cuối.</p>
+                </div>
+                <div class="head-actions">
+                    <label class="compact-field">
+                        Hiển thị
+                        <select id="kitchen-limit">
+                            <option value="3">3 đơn</option>
+                            <option value="6">6 đơn</option>
+                            <option value="all" selected>Tất cả</option>
+                        </select>
+                    </label>
+                    <button class="button primary" data-action="refresh-board">↻ Làm mới</button>
+                </div>
+            </header>
+
+            <section class="metric-strip" id="kitchen-metrics">
+                <div><span>Chưa thực hiện</span><strong id="kitchen-new-count">0</strong></div>
+                <div><span>Đang chế biến</span><strong id="kitchen-cooking-count">0</strong></div>
+                <div><span>Chờ phục vụ</span><strong id="kitchen-ready-count">0</strong></div>
+                <div><span>Chờ trung bình</span><strong id="kitchen-avg-wait">0′</strong></div>
+            </section>
+
+            <section class="queue-section">
+                <div class="section-title compact">
+                    <div>
+                        <p class="kicker">Cần xử lý trước</p>
+                        <h2 id="active-queue-heading">Đơn đang hoạt động</h2>
+                    </div>
+                </div>
+                <div class="board kitchen-queue-grid" id="active-queue">
+                    <!-- Các đơn bếp cần chế biến -->
+                </div>
+            </section>
+
+            <section class="queue-section completed-queue">
+                <div class="section-title compact">
+                    <div>
+                        <p class="kicker">Lịch sử gần đây</p>
+                        <h2 id="completed-queue-heading">Đơn đã hoàn tất</h2>
+                    </div>
+                </div>
+                <div class="kitchen-queue-grid" id="completed-queue">
+                    <!-- Các đơn bếp đã phục vụ -->
+                </div>
+            </section>
+        </div>
+    </main>
+    </div>
+
+    <footer class="site-footer">
+        <span>MenuMind · vận hành thông minh, phục vụ có nhịp</span>
+        <span>Hệ thống vận hành nhà hàng</span>
+    </footer>
+</body>
+
+</html>

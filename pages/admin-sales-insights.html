@@ -1,0 +1,154 @@
+<!doctype html>
+<html lang="vi">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="Thống kê doanh thu và báo cáo bán hàng - MenuMind.">
+    <title>Bán hàng · MenuMind</title>
+    <link rel="stylesheet" href="../css/common.css">
+    <link rel="stylesheet" href="../css/header.css">
+    <link rel="stylesheet" href="../css/admin-sales-insights.css">
+    <script src="../js/database.js" defer></script>
+    <script src="../js/common.js" defer></script>
+    <script src="../js/header.js" defer></script>
+    <script src="../js/admin-sales-insights.js" defer></script>
+</head>
+
+<body data-root=".." data-page="admin-sales" data-title="Bán hàng">
+<!-- ==========================================================================
+     PHÂN VÙNG GIAO DIỆN - BÁO CÁO DOANH SỐ & THỐNG KÊ (S13)
+     • VÙNG 1: Header hệ thống & Điều hướng bên (Sidebar Navigation)
+     • VÙNG 2: Tiêu đề báo cáo & Nút xuất file dữ liệu (Export CSV)
+     • VÙNG 3: Dải chỉ số tổng quan (KPI Metrics Strip)
+     • VÙNG 4: Biểu đồ doanh thu theo chu kỳ (Sales Bar Chart)
+     • VÙNG 5: Bảng xếp hạng món bán chạy nhất (Top Dishes Ranking)
+========================================================================== -->
+
+    <!-- ====================================================================== -->
+    <!-- VÙNG 1: HEADER HỆ THỐNG & ĐIỀU HƯỚNG TỔNG QUAN                         -->
+    <!-- ====================================================================== -->
+    <header class="site-header">
+        <a class="skip-link" href="#main-content">Bỏ qua điều hướng</a>
+        <div class="brand"><span class="brand-mark" aria-hidden="true">M</span><span>MenuMind</span></div>
+        <button class="nav-toggle" type="button" aria-expanded="false" aria-controls="global-nav">
+            <span aria-hidden="true">☰</span>
+            <span class="sr-only">Mở điều hướng</span>
+        </button>
+        <nav id="global-nav" class="global-nav" aria-label="Điều hướng chính">
+            <a href="../index.html#qr-order">Gọi món bằng QR</a>
+            <a href="diner-order-status.html">Theo dõi đơn</a>
+            <a href="login.html">Khu vực nhân viên</a>
+        </nav>
+        <a class="role-pill" href="login.html" aria-label="Đổi vai trò"><span class="pulse-dot"></span>Quản trị</a>
+    </header>
+
+    <div class="page-frame">
+        <aside>
+            <nav class="side-nav" aria-label="Điều hướng admin">
+                <p>Không gian làm việc</p>
+                <a href="admin-user-management.html"><span aria-hidden="true">□</span>Tài khoản</a>
+                <a href="manager-table-management.html"><span aria-hidden="true">□</span>Bàn ăn</a>
+                <a href="manager-menu-management.html"><span aria-hidden="true">□</span>Thực đơn</a>
+                <a class="active" href="admin-sales-insights.html"><span aria-hidden="true">□</span>Bán hàng</a>
+                <a href="manager-payment-requests.html"><span aria-hidden="true">□</span>Thanh toán</a>
+                <a href="manager-feedback-center.html"><span aria-hidden="true">□</span>Phản hồi</a>
+                <a href="admin-settings.html"><span aria-hidden="true">□</span>Cài đặt</a>
+                <a href="login.html"><span aria-hidden="true">↗</span>Đổi vai trò</a>
+            </nav>
+        </aside>
+
+        <main id="main-content" class="site-main">
+            <!-- ============================================================== -->
+            <!-- VÙNG 2: TIÊU ĐỀ TRANG BÁO CÁO & XUẤT DỮ LIỆU NGOÀI (EXPORT)   -->
+            <!-- ============================================================== -->
+            <header class="page-head">
+                <div>
+                    <p class="kicker">Tổng quan kinh doanh</p>
+                    <h1>Báo cáo doanh số & Thống kê</h1>
+                    <p>Theo dõi doanh thu, hiệu suất món và thời gian phục vụ theo từng chu kỳ.</p>
+                </div>
+                <div class="head-actions">
+                    <button class="button quiet" data-action="export-csv" id="btn-export-csv" type="button">↓ Xuất CSV</button>
+                </div>
+            </header>
+
+            <!-- ============================================================== -->
+            <!-- VÙNG 3: DẢI CHỈ SỐ KPI TỔNG QUAN (METRIC STRIP)               -->
+            <!-- Chức năng: Thể hiện Doanh thu, Số đơn, Giá trị TB, Chờ TB      -->
+            <!-- ============================================================== -->
+            <section class="metric-strip manager" aria-label="Các chỉ số bán hàng then chốt">
+                <div>
+                    <span>Doanh thu</span>
+                    <strong id="metric-revenue">48,6<small> tr</small></strong>
+                    <em id="metric-revenue-trend" class="trend-up">+12,4%</em>
+                </div>
+                <div>
+                    <span>Đơn hoàn tất</span>
+                    <strong id="metric-orders">326</strong>
+                    <em id="metric-orders-trend" class="trend-up">+8,1%</em>
+                </div>
+                <div>
+                    <span>Giá trị đơn TB</span>
+                    <strong id="metric-aov">149<small>k</small></strong>
+                    <em id="metric-aov-trend" class="trend-up">+3,2%</em>
+                </div>
+                <div>
+                    <span>Thời gian chờ TB</span>
+                    <strong id="metric-wait">13<small>′</small></strong>
+                    <em id="metric-wait-trend" class="down">−2 phút</em>
+                </div>
+            </section>
+
+            <div class="content-grid">
+                <!-- ========================================================== -->
+                <!-- VÙNG 4: BIỂU ĐỒ CỘT DOANH THU & CHỌN CHU KỲ THỜI GIAN      -->
+                <!-- Chức năng: Lọc dữ liệu theo Tuần này / Tuần trước / Tháng  -->
+                <!-- ========================================================== -->
+                <section class="surface chart-card">
+                    <div class="section-title compact">
+                        <div>
+                            <p class="kicker" id="chart-kicker">Chu kỳ 7 ngày</p>
+                            <h2>Doanh thu theo ngày</h2>
+                        </div>
+                        <label class="compact-field" for="period-select">
+                            <span>Giai đoạn</span>
+                            <select id="period-select" aria-label="Chọn giai đoạn báo cáo">
+                                <option value="this-week">Tuần này</option>
+                                <option value="last-week">Tuần trước</option>
+                                <option value="this-month">Tháng này</option>
+                            </select>
+                        </label>
+                    </div>
+                    <!-- Khu vực vẽ biểu đồ cột tương quan -->
+                    <div id="sales-chart" class="chart" role="img" aria-label="Biểu đồ cột doanh thu theo ngày">
+                        <!-- Render động qua JavaScript -->
+                    </div>
+                </section>
+
+                <!-- ========================================================== -->
+                <!-- VÙNG 5: BẢNG XẾP HẠNG TOP MÓN ĂN ĐƯỢC GỌI NHIỀU NHẤT       -->
+                <!-- Chức năng: Sắp xếp theo số lượng bán và tính tổng thu      -->
+                <!-- ========================================================== -->
+                <section class="surface">
+                    <div class="section-title compact">
+                        <div>
+                            <p class="kicker">Món được gọi nhiều nhất</p>
+                            <h2>Top món bán chạy</h2>
+                        </div>
+                    </div>
+                    <div class="rank-list" id="top-dish-ranks" aria-live="polite">
+                        <!-- Render danh sách top món qua JavaScript -->
+                    </div>
+                </section>
+            </div>
+        </main>
+    </div>
+
+    <footer class="site-footer">
+        <span>MenuMind · vận hành thông minh, phục vụ có nhịp</span>
+        <span>Hệ thống vận hành nhà hàng</span>
+    </footer>
+</body>
+
+</html>

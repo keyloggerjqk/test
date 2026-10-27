@@ -1,0 +1,101 @@
+<!doctype html>
+<html lang="vi">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="Chi tiết món ăn và tùy chỉnh - MenuMind.">
+    <title>Chi tiết món · MenuMind</title>
+    <link rel="stylesheet" href="../css/common.css">
+    <link rel="stylesheet" href="../css/header.css">
+    <link rel="stylesheet" href="../css/diner-dish-detail.css">
+    <script src="../js/database.js" defer></script>
+    <script src="../js/common.js" defer></script>
+    <script src="../js/header.js" defer></script>
+    <script src="../js/diner-cart.js" defer></script>
+    <script src="../js/diner-dish-detail.js" defer></script>
+</head>
+
+<body data-root=".." data-page="dish-detail" data-title="Chi tiết món">
+    <header class="site-header">
+        <a class="skip-link" href="#main-content">Bỏ qua điều hướng</a>
+        <div class="brand"><span class="brand-mark" aria-hidden="true">M</span><span>MenuMind</span></div>
+        <button class="nav-toggle" type="button" aria-expanded="false" aria-controls="global-nav">
+            <span aria-hidden="true">☰</span>
+            <span class="sr-only">Mở điều hướng</span>
+        </button>
+        <nav id="global-nav" class="global-nav" aria-label="Điều hướng chính">
+            <a href="../index.html#qr-order">Gọi món bằng QR</a>
+            <a href="diner-order-status.html">Theo dõi đơn</a>
+            <a href="login.html">Khu vực nhân viên</a>
+        </nav>
+        <a class="role-pill" href="login.html" aria-label="Đổi vai trò"><span class="pulse-dot"></span>Bàn A01</a>
+    </header>
+
+    <main id="main-content" class="site-main">
+        <header class="page-head">
+            <div>
+                <p class="kicker">Chi tiết món</p>
+                <h1>Một lựa chọn đáng thử</h1>
+                <p>Xem thành phần, tùy chỉnh khẩu phần và ghi chú trực tiếp cho bếp.</p>
+            </div>
+        </header>
+
+        <div class="detail-layout">
+            <article class="detail-card">
+                <div class="detail-visual tone-1" id="detail-visual">
+                    <img class="detail-photo" id="dish-img" src="../assets/images/menu/m01.jpg" alt="Món ăn" width="720" height="480">
+                    <div>
+                        <small id="dish-category">Món chính</small>
+                        <strong id="dish-time">15 phút chuẩn bị</strong>
+                    </div>
+                </div>
+                <div class="detail-copy">
+                    <div class="dish-meta">
+                        <span id="dish-rating">★ 4.8 · 120 lượt gọi</span>
+                        <span id="dish-tags">Đặc sắc · Thanh nhẹ</span>
+                    </div>
+                    <h2 id="dish-name">Cá hồi sốt quýt</h2>
+                    <p id="dish-desc">Cá hồi áp chảo thơm giòn dùng kèm sốt quýt tươi thanh nhẹ và rau củ mùa thu.</p>
+                    <dl class="nutrition">
+                        <div><dt>Năng lượng</dt><dd id="dish-cal">~520 kcal</dd></div>
+                        <div><dt>Protein</dt><dd id="dish-protein">32 g</dd></div>
+                        <div><dt>Độ cay</dt><dd id="dish-spicy">Không cay</dd></div>
+                    </dl>
+                </div>
+            </article>
+
+            <form id="dish-form" class="order-panel" data-price="185000">
+                <p class="kicker">Tùy chỉnh món</p>
+                <h2 id="dish-price">185.000 ₫</h2>
+                <input type="hidden" name="menuId" id="dish-menuId" value="m01">
+                <fieldset>
+                    <legend>Khẩu phần</legend>
+                    <div class="stepper">
+                        <button type="button" data-step="-1">−</button>
+                        <input id="dish-qty" name="qty" type="number" min="1" max="10" value="1" aria-label="Số lượng">
+                        <button type="button" data-step="1">+</button>
+                    </div>
+                </fieldset>
+                <label>
+                    Ghi chú cho bếp
+                    <textarea name="note" rows="4" maxlength="120" placeholder="Ví dụ: không hành, ít cay..."></textarea>
+                    <small>Các yêu cầu dị ứng cần báo trực tiếp với nhân viên.</small>
+                </label>
+                <div class="order-total">
+                    <span>Tạm tính</span>
+                    <strong id="dish-total">185.000 ₫</strong>
+                </div>
+                <button class="button primary full" type="submit">Thêm vào giỏ</button>
+                <a class="button quiet full" href="diner-menu.html">Quay lại thực đơn</a>
+            </form>
+        </div>
+    </main>
+
+    <footer class="site-footer">
+        <span>MenuMind · vận hành thông minh, phục vụ có nhịp</span>
+        <span>Hệ thống vận hành nhà hàng</span>
+    </footer>
+</body>
+
+</html>

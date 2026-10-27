@@ -1,0 +1,119 @@
+<!doctype html>
+<html lang="vi">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="Thực đơn tại bàn thông minh MenuMind.">
+    <title>Thực đơn · MenuMind</title>
+    <link rel="stylesheet" href="../css/common.css">
+    <link rel="stylesheet" href="../css/header.css">
+    <link rel="stylesheet" href="../css/diner-menu.css">
+    <script src="../js/database.js" defer></script>
+    <script src="../js/common.js" defer></script>
+    <script src="../js/header.js" defer></script>
+    <script src="../js/diner-cart.js" defer></script>
+    <script src="../js/diner-menu.js" defer></script>
+</head>
+
+<body data-root=".." data-page="menu" data-title="Thực đơn">
+    <header class="site-header">
+        <a class="skip-link" href="#main-content">Bỏ qua điều hướng</a>
+        <div class="brand"><span class="brand-mark" aria-hidden="true">M</span><span>MenuMind</span></div>
+        <button class="nav-toggle" type="button" aria-expanded="false" aria-controls="global-nav">
+            <span aria-hidden="true">☰</span>
+            <span class="sr-only">Mở điều hướng</span>
+        </button>
+        <nav id="global-nav" class="global-nav" aria-label="Điều hướng chính">
+            <a href="../index.html#qr-order">Gọi món bằng QR</a>
+            <a href="diner-order-status.html">Theo dõi đơn</a>
+            <a href="login.html">Khu vực nhân viên</a>
+        </nav>
+        <a class="role-pill" href="login.html" aria-label="Đổi vai trò"><span class="pulse-dot"></span>Bàn A01</a>
+    </header>
+
+    <main id="main-content" class="site-main">
+        <header class="page-head">
+            <div>
+                <p class="kicker">Thực đơn tại bàn</p>
+                <h1>Tối nay bạn muốn ăn gì?</h1>
+                <p>Tìm món theo khẩu vị, thời gian và chế độ ăn. Gợi ý của MenuMind luôn để bạn quyết định.</p>
+            </div>
+            <div class="head-actions">
+                <a class="button quiet" href="diner-table-order.html">Giỏ món <span id="cart-count" class="count">0</span></a>
+            </div>
+        </header>
+
+        <section class="menu-tools" aria-label="Tìm và lọc thực đơn">
+            <label class="search-field">
+                <span class="sr-only">Tìm món</span>
+                <span aria-hidden="true">⌕</span>
+                <input id="menu-search" type="search" placeholder="Tìm món, nguyên liệu..." autocomplete="off">
+            </label>
+            <div class="chip-group" id="category-filter">
+                <button type="button" class="chip active" data-category="Tất cả">Tất cả</button>
+                <button type="button" class="chip" data-category="Khai vị">Khai vị</button>
+                <button type="button" class="chip" data-category="Món chính">Món chính</button>
+                <button type="button" class="chip" data-category="Tráng miệng">Tráng miệng</button>
+                <button type="button" class="chip" data-category="Đồ uống">Đồ uống</button>
+            </div>
+            <label class="compact-field">
+                Sắp xếp
+                <select id="menu-sort">
+                    <option value="popular">Phổ biến</option>
+                    <option value="price-low">Giá tăng dần</option>
+                    <option value="time">Nhanh nhất</option>
+                </select>
+            </label>
+        </section>
+
+        <div class="menu-layout">
+            <section aria-labelledby="menu-heading">
+                <div class="section-title compact">
+                    <div>
+                        <p class="kicker">Bếp đang phục vụ</p>
+                        <h2 id="menu-heading"><span id="menu-count">10</span> món phù hợp</h2>
+                    </div>
+                </div>
+                <div id="menu-grid" class="dish-grid">
+                    <!-- Danh sách thẻ món ăn được nạp động từ dữ liệu thực đơn -->
+                </div>
+            </section>
+
+            <aside class="ai-panel" aria-labelledby="taste-title">
+                <div class="ai-head">
+                    <span>✦</span>
+                    <div>
+                        <p>MenuMind AI</p>
+                        <h2 id="taste-title">Tìm món hợp gu</h2>
+                    </div>
+                </div>
+                <form id="taste-form">
+                    <label>
+                        Hôm nay bạn muốn vị gì?
+                        <select name="taste" required>
+                            <option value="">Chọn khẩu vị</option>
+                            <option value="Thanh nhẹ">Thanh nhẹ</option>
+                            <option value="Đậm đà">Đậm đà</option>
+                            <option value="Cay ấm">Cay ấm</option>
+                            <option value="Thuần chay">Thuần chay</option>
+                        </select>
+                    </label>
+                    <label>
+                        Điều bạn muốn tránh
+                        <input name="avoid" placeholder="Ví dụ: đậu phộng, cay..." minlength="3">
+                    </label>
+                    <button class="button ai" type="submit">✦ Gợi ý cho tôi</button>
+                </form>
+                <div id="taste-result" class="ai-result" aria-live="polite"></div>
+            </aside>
+        </div>
+    </main>
+
+    <footer class="site-footer">
+        <span>MenuMind · vận hành thông minh, phục vụ có nhịp</span>
+        <span>Hệ thống vận hành nhà hàng</span>
+    </footer>
+</body>
+
+</html>

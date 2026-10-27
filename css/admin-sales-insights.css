@@ -1,0 +1,236 @@
+/* CSS cho màn hình Báo cáo doanh số & Thống kê (S13) */
+
+.metric-strip {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  margin-block-end: 26px;
+  border: 1px solid var(--line);
+  border-radius: var(--radius-md, 12px);
+  background: var(--surface);
+  overflow: hidden;
+}
+
+.metric-strip > div {
+  display: grid;
+  gap: 4px;
+  padding: 20px 22px;
+  border-inline-end: 1px solid var(--line);
+}
+
+.metric-strip > div:last-child {
+  border: 0;
+}
+
+.metric-strip span {
+  color: var(--muted);
+  font-size: 0.72rem;
+  font-weight: 500;
+  text-transform: uppercase;
+  letter-spacing: 0.4px;
+}
+
+.metric-strip strong {
+  font-size: 1.85rem;
+  font-weight: 800;
+  color: var(--ink);
+  line-height: 1.1;
+}
+
+.metric-strip strong small {
+  font-size: 0.95rem;
+  font-weight: 600;
+  color: var(--muted);
+}
+
+.metric-strip em {
+  font-size: 0.72rem;
+  font-style: normal;
+  font-weight: 600;
+}
+
+.trend-up {
+  color: var(--leaf, #16a34a);
+}
+
+.metric-strip em.down {
+  color: var(--danger, #dc2626);
+}
+
+.content-grid {
+  display: grid;
+  grid-template-columns: minmax(0, 1.45fr) minmax(300px, 0.8fr);
+  gap: 22px;
+  align-items: start;
+}
+
+.compact-field {
+  display: flex;
+  align-items: center;
+  gap: 9px;
+  white-space: nowrap;
+  font-size: 0.85rem;
+  color: var(--muted);
+}
+
+.compact-field select {
+  min-width: 130px;
+  padding: 8px 12px;
+  border: 1px solid var(--line);
+  border-radius: var(--radius-sm, 8px);
+  background: var(--surface);
+  color: var(--ink);
+  font-family: inherit;
+  font-size: 0.85rem;
+}
+
+.chart-card {
+  overflow: hidden;
+}
+
+.section-title.compact {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-block-end: 16px;
+}
+
+.chart {
+  display: grid;
+  grid-template-columns: repeat(7, 1fr);
+  gap: 12px;
+  align-items: end;
+  height: 280px;
+  padding-block-start: 35px;
+  border-block-end: 1px solid var(--line);
+  padding-block-end: 10px;
+}
+
+.chart > div {
+  display: grid;
+  grid-template-rows: 1fr auto;
+  align-items: end;
+  gap: 8px;
+  height: 100%;
+  text-align: center;
+}
+
+.chart span {
+  position: relative;
+  display: block;
+  min-height: 14px;
+  background: var(--leaf, #22c55e);
+  border-radius: 6px 6px 0 0;
+  transition: height var(--transition-fast, 0.3s ease);
+}
+
+.chart span b {
+  position: absolute;
+  inset: -24px 50% auto auto;
+  transform: translateX(50%);
+  font-size: 0.68rem;
+  color: var(--ink);
+  font-weight: 700;
+  white-space: nowrap;
+}
+
+.chart small {
+  font-size: 0.72rem;
+  color: var(--muted);
+  font-weight: 600;
+}
+
+.rank-row {
+  display: grid;
+  grid-template-columns: 28px 1fr auto;
+  gap: 12px;
+  align-items: center;
+  padding-block: 13px;
+  border-block-end: 1px solid var(--line);
+}
+
+.rank-row:last-child {
+  border-block-end: none;
+}
+
+.rank-row > span {
+  display: grid;
+  place-items: center;
+  width: 26px;
+  height: 26px;
+  border-radius: 50%;
+  background: var(--citrus-soft, #fef3c7);
+  color: #b45309;
+  font-weight: 800;
+  font-size: 0.75rem;
+}
+
+.rank-row div {
+  display: grid;
+  gap: 2px;
+}
+
+.rank-row strong {
+  font-size: 0.88rem;
+  color: var(--ink);
+}
+
+.rank-row small {
+  font-size: 0.72rem;
+  color: var(--muted);
+}
+
+.rank-row b {
+  font-size: 0.82rem;
+  color: var(--ink);
+  font-weight: 700;
+}
+
+@media (max-width: 900px) {
+  .content-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+@media (max-width: 640px) {
+  .metric-strip {
+    grid-template-columns: 1fr 1fr;
+  }
+
+  .metric-strip > div:nth-child(2) {
+    border-inline-end: 0;
+  }
+
+  .metric-strip > div {
+    border-block-end: 1px solid var(--line);
+  }
+
+  .metric-strip > div:nth-last-child(-n+2) {
+    border-block-end: 0;
+  }
+
+  .chart {
+    height: 220px;
+    gap: 6px;
+  }
+
+  .chart span b {
+    font-size: 0.58rem;
+  }
+}
+
+@media (max-width: 375px) {
+  .section-title.compact {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 8px;
+  }
+
+  .metric-strip > div {
+    padding: 14px 12px;
+  }
+
+  .metric-strip strong {
+    font-size: 1.45rem;
+  }
+}
+

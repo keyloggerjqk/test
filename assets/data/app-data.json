@@ -1,0 +1,728 @@
+{
+  "menuItems": [
+    {
+      "id": "m01",
+      "name": "Cá hồi áp chảo sốt chanh",
+      "category": "Món chính",
+      "price": 189000,
+      "time": 18,
+      "spicy": 0,
+      "vegetarian": false,
+      "available": true,
+      "rating": 4.9,
+      "orders": 128,
+      "emoji": "🐟",
+      "image": "assets/images/menu/m01.jpg",
+      "description": "Cá hồi áp chảo da giòn, sốt chanh bơ, rau xanh và khoai nghiền.",
+      "tags": [
+        "giàu đạm",
+        "bán chạy"
+      ]
+    },
+    {
+      "id": "m02",
+      "name": "Sườn bò nướng sốt tiêu",
+      "category": "Món chính",
+      "price": 219000,
+      "time": 20,
+      "spicy": 1,
+      "vegetarian": false,
+      "available": true,
+      "rating": 4.8,
+      "orders": 102,
+      "emoji": "🥩",
+      "image": "assets/images/menu/m02.jpg",
+      "description": "Sườn bò nướng mềm, sốt tiêu đen, cà chua và rau củ theo mùa.",
+      "tags": [
+        "đậm vị",
+        "bán chạy"
+      ]
+    },
+    {
+      "id": "m03",
+      "name": "Salad vườn sốt chanh",
+      "category": "Khai vị",
+      "price": 89000,
+      "time": 9,
+      "spicy": 0,
+      "vegetarian": true,
+      "available": true,
+      "rating": 4.7,
+      "orders": 88,
+      "emoji": "🥗",
+      "image": "assets/images/menu/m03.jpg",
+      "description": "Xà lách non, cà chua bi, bánh mì giòn và sốt chanh mật ong.",
+      "tags": [
+        "tươi mát",
+        "ít calo"
+      ]
+    },
+    {
+      "id": "m04",
+      "name": "Salad ngũ sắc hạt điều",
+      "category": "Món chay",
+      "price": 99000,
+      "time": 10,
+      "spicy": 0,
+      "vegetarian": true,
+      "available": true,
+      "rating": 4.8,
+      "orders": 76,
+      "emoji": "🥗",
+      "image": "assets/images/menu/m04.jpg",
+      "description": "Rau xanh, bơ, đậu gà, củ quả giòn và sốt mè rang nhà làm.",
+      "tags": [
+        "thuần chay",
+        "nhiều chất xơ"
+      ]
+    },
+    {
+      "id": "m05",
+      "name": "Mì xào tôm kiểu Thái",
+      "category": "Món chính",
+      "price": 139000,
+      "time": 14,
+      "spicy": 1,
+      "vegetarian": false,
+      "available": true,
+      "rating": 4.7,
+      "orders": 94,
+      "emoji": "🍜",
+      "image": "assets/images/menu/m05.jpg",
+      "description": "Mì xào dai mềm, tôm tươi, giá hẹ và sốt me chua ngọt.",
+      "tags": [
+        "hải sản",
+        "hơi cay"
+      ]
+    },
+    {
+      "id": "m06",
+      "name": "Cà ri gà kem dừa",
+      "category": "Món chính",
+      "price": 149000,
+      "time": 17,
+      "spicy": 2,
+      "vegetarian": false,
+      "available": true,
+      "rating": 4.6,
+      "orders": 61,
+      "emoji": "🍛",
+      "image": "assets/images/menu/m06.jpg",
+      "description": "Gà mềm nấu cà ri, nước cốt dừa, khoai củ và gia vị ấm.",
+      "tags": [
+        "thơm béo",
+        "cay vừa"
+      ]
+    },
+    {
+      "id": "m07",
+      "name": "Brownie kem vani",
+      "category": "Tráng miệng",
+      "price": 69000,
+      "time": 7,
+      "spicy": 0,
+      "vegetarian": true,
+      "available": true,
+      "rating": 4.9,
+      "orders": 143,
+      "emoji": "🍨",
+      "image": "assets/images/menu/m07.jpg",
+      "description": "Brownie chocolate ấm dùng cùng kem vani và sốt caramel.",
+      "tags": [
+        "ngọt dịu",
+        "dùng nóng"
+      ]
+    },
+    {
+      "id": "m08",
+      "name": "Trà đào cam sả",
+      "category": "Đồ uống",
+      "price": 49000,
+      "time": 4,
+      "spicy": 0,
+      "vegetarian": true,
+      "available": true,
+      "rating": 4.6,
+      "orders": 112,
+      "emoji": "🍹",
+      "image": "assets/images/menu/m08.jpg",
+      "description": "Trà đen, đào miếng, cam vàng và sả tươi, phục vụ lạnh.",
+      "tags": [
+        "không cồn",
+        "thanh mát"
+      ]
+    },
+    {
+      "id": "m09",
+      "name": "Bánh xếp rau củ chiên giòn",
+      "category": "Khai vị",
+      "price": 79000,
+      "time": 9,
+      "spicy": 1,
+      "vegetarian": true,
+      "available": true,
+      "rating": 4.6,
+      "orders": 67,
+      "emoji": "🥟",
+      "image": "assets/images/menu/m09.jpg",
+      "description": "Bánh xếp nhân rau củ, vỏ giòn nhẹ, dùng cùng sốt me cay.",
+      "tags": [
+        "món chay",
+        "giòn ngon"
+      ]
+    },
+    {
+      "id": "m10",
+      "name": "Mì xào nấm rau củ",
+      "category": "Món chay",
+      "price": 109000,
+      "time": 12,
+      "spicy": 1,
+      "vegetarian": true,
+      "available": true,
+      "rating": 4.7,
+      "orders": 81,
+      "emoji": "🍝",
+      "image": "assets/images/menu/m10.jpg",
+      "description": "Mì trứng xào nấm, cải thìa và rau củ với nước tương ít mặn.",
+      "tags": [
+        "món chay",
+        "nhanh"
+      ]
+    },
+    {
+      "id": "m11",
+      "name": "Cơm chiên Dương Châu",
+      "category": "Món chính",
+      "price": 119000,
+      "time": 12,
+      "spicy": 0,
+      "vegetarian": false,
+      "available": true,
+      "rating": 4.8,
+      "orders": 136,
+      "emoji": "🍚",
+      "image": "assets/images/menu/m11.jpg",
+      "description": "Cơm chiên tơi hạt cùng tôm, trứng, rau củ và hành lá.",
+      "tags": [
+        "phổ biến",
+        "không cay"
+      ]
+    },
+    {
+      "id": "m12",
+      "name": "Sushi cá hồi cuộn bơ",
+      "category": "Món chính",
+      "price": 169000,
+      "time": 16,
+      "spicy": 0,
+      "vegetarian": false,
+      "available": true,
+      "rating": 4.9,
+      "orders": 97,
+      "emoji": "🍣",
+      "image": "assets/images/menu/m12.jpg",
+      "description": "Cá hồi tươi, bơ, cơm giấm và rong biển, dùng cùng gừng hồng.",
+      "tags": [
+        "hải sản",
+        "tươi sống"
+      ]
+    },
+    {
+      "id": "m13",
+      "name": "Pizza gà nướng nấm",
+      "category": "Món chính",
+      "price": 179000,
+      "time": 19,
+      "spicy": 0,
+      "vegetarian": false,
+      "available": true,
+      "rating": 4.7,
+      "orders": 79,
+      "emoji": "🍕",
+      "image": "assets/images/menu/m13.jpg",
+      "description": "Đế bánh mỏng giòn, gà nướng, nấm, hành tím và phô mai mozzarella.",
+      "tags": [
+        "chia sẻ",
+        "phô mai"
+      ]
+    },
+    {
+      "id": "m14",
+      "name": "Spaghetti hải sản",
+      "category": "Món chính",
+      "price": 159000,
+      "time": 17,
+      "spicy": 1,
+      "vegetarian": false,
+      "available": true,
+      "rating": 4.8,
+      "orders": 91,
+      "emoji": "🍝",
+      "image": "assets/images/menu/m14.jpg",
+      "description": "Mì Ý sốt cà chua, tôm, mực, cà chua bi và thảo mộc.",
+      "tags": [
+        "hải sản",
+        "kiểu Ý"
+      ]
+    },
+    {
+      "id": "m15",
+      "name": "Cơm gạo lứt ức gà",
+      "category": "Món chính",
+      "price": 129000,
+      "time": 14,
+      "spicy": 0,
+      "vegetarian": false,
+      "available": true,
+      "rating": 4.6,
+      "orders": 64,
+      "emoji": "🥙",
+      "image": "assets/images/menu/m15.jpg",
+      "description": "Gạo lứt, ức gà nướng, cà chua, rau xanh và sốt sữa chua.",
+      "tags": [
+        "eat clean",
+        "giàu đạm"
+      ]
+    },
+    {
+      "id": "m16",
+      "name": "Bánh mì bơ trứng lòng đào",
+      "category": "Bữa sáng",
+      "price": 79000,
+      "time": 8,
+      "spicy": 0,
+      "vegetarian": true,
+      "available": true,
+      "rating": 4.7,
+      "orders": 73,
+      "emoji": "🍳",
+      "image": "assets/images/menu/m16.jpg",
+      "description": "Bánh mì nướng, bơ nghiền, trứng lòng đào và xà lách non.",
+      "tags": [
+        "bữa sáng",
+        "nhanh"
+      ]
+    },
+    {
+      "id": "m17",
+      "name": "Pancake dâu việt quất",
+      "category": "Tráng miệng",
+      "price": 79000,
+      "time": 10,
+      "spicy": 0,
+      "vegetarian": true,
+      "available": true,
+      "rating": 4.8,
+      "orders": 105,
+      "emoji": "🥞",
+      "image": "assets/images/menu/m17.jpg",
+      "description": "Pancake mềm, dâu tươi, việt quất, chuối và mật ong.",
+      "tags": [
+        "trái cây",
+        "ngọt dịu"
+      ]
+    },
+    {
+      "id": "m18",
+      "name": "Cà phê latte",
+      "category": "Đồ uống",
+      "price": 45000,
+      "time": 5,
+      "spicy": 0,
+      "vegetarian": true,
+      "available": true,
+      "rating": 4.8,
+      "orders": 151,
+      "emoji": "☕",
+      "image": "assets/images/menu/m18.jpg",
+      "description": "Espresso rang vừa hòa cùng sữa tươi đánh nóng mịn.",
+      "tags": [
+        "cà phê",
+        "phục vụ nóng"
+      ]
+    },
+    {
+      "id": "m19",
+      "name": "Mocktail chanh dây",
+      "category": "Đồ uống",
+      "price": 59000,
+      "time": 5,
+      "spicy": 0,
+      "vegetarian": true,
+      "available": true,
+      "rating": 4.5,
+      "orders": 58,
+      "emoji": "🍸",
+      "image": "assets/images/menu/m19.jpg",
+      "description": "Chanh dây, cam, soda và syrup thảo mộc, hoàn toàn không cồn.",
+      "tags": [
+        "không cồn",
+        "chua ngọt"
+      ]
+    },
+    {
+      "id": "m20",
+      "name": "Bánh kem phúc bồn tử",
+      "category": "Tráng miệng",
+      "price": 75000,
+      "time": 6,
+      "spicy": 0,
+      "vegetarian": true,
+      "available": true,
+      "rating": 4.8,
+      "orders": 86,
+      "emoji": "🍰",
+      "image": "assets/images/menu/m20.jpg",
+      "description": "Cốt bánh vani mềm, kem sữa nhẹ và phúc bồn tử tươi.",
+      "tags": [
+        "trái cây",
+        "bán chạy"
+      ]
+    },
+    {
+      "id": "m21",
+      "name": "Salad đậu hũ sốt mè",
+      "category": "Món chay",
+      "price": 109000,
+      "time": 11,
+      "spicy": 0,
+      "vegetarian": true,
+      "available": true,
+      "rating": 4.7,
+      "orders": 69,
+      "emoji": "🥗",
+      "image": "assets/images/menu/m21.jpg",
+      "description": "Đậu hũ áp chảo, bắp, bơ, bắp cải tím và sốt mè rang.",
+      "tags": [
+        "thuần chay",
+        "giàu đạm"
+      ]
+    },
+    {
+      "id": "m22",
+      "name": "Ravioli nấm sốt kem",
+      "category": "Món chay",
+      "price": 139000,
+      "time": 15,
+      "spicy": 0,
+      "vegetarian": true,
+      "available": true,
+      "rating": 4.6,
+      "orders": 43,
+      "emoji": "🍝",
+      "image": "assets/images/menu/m22.jpg",
+      "description": "Pasta nhân nấm, sốt kem thảo mộc và phô mai parmesan.",
+      "tags": [
+        "kiểu Ý",
+        "thơm béo"
+      ]
+    },
+    {
+      "id": "m23",
+      "name": "Soda dâu chanh",
+      "category": "Đồ uống",
+      "price": 49000,
+      "time": 4,
+      "spicy": 0,
+      "vegetarian": true,
+      "available": true,
+      "rating": 4.7,
+      "orders": 93,
+      "emoji": "🥤",
+      "image": "assets/images/menu/m23.jpg",
+      "description": "Dâu tươi, chanh xanh, bạc hà và soda mát lạnh.",
+      "tags": [
+        "không cồn",
+        "trái cây"
+      ]
+    },
+    {
+      "id": "m24",
+      "name": "Salad phô mai rau củ",
+      "category": "Khai vị",
+      "price": 119000,
+      "time": 11,
+      "spicy": 0,
+      "vegetarian": true,
+      "available": true,
+      "rating": 4.7,
+      "orders": 74,
+      "emoji": "🥗",
+      "image": "assets/images/menu/m24.jpg",
+      "description": "Xà lách romaine, dưa leo, phô mai, cà chua và sốt thảo mộc.",
+      "tags": [
+        "món chay",
+        "tươi mát"
+      ]
+    }
+  ],
+  "orders": [
+    {
+      "id": "MM-2410",
+      "table": "B04",
+      "createdAt": "18:42",
+      "status": "new",
+      "priority": false,
+      "wait": 6,
+      "items": [
+        {
+          "menuId": "m03",
+          "qty": 1
+        },
+        {
+          "menuId": "m05",
+          "qty": 2
+        }
+      ],
+      "note": "Một phần mì không hành"
+    },
+    {
+      "id": "MM-2409",
+      "table": "A02",
+      "createdAt": "18:35",
+      "status": "cooking",
+      "priority": true,
+      "wait": 13,
+      "items": [
+        {
+          "menuId": "m01",
+          "qty": 2
+        },
+        {
+          "menuId": "m07",
+          "qty": 2
+        }
+      ],
+      "note": "Cá hồi chín vừa"
+    },
+    {
+      "id": "MM-2408",
+      "table": "C01",
+      "createdAt": "18:31",
+      "status": "cooking",
+      "priority": false,
+      "wait": 17,
+      "items": [
+        {
+          "menuId": "m02",
+          "qty": 1
+        },
+        {
+          "menuId": "m04",
+          "qty": 1
+        }
+      ],
+      "note": "Dị ứng đậu phộng"
+    },
+    {
+      "id": "MM-2407",
+      "table": "A06",
+      "createdAt": "18:24",
+      "status": "ready",
+      "priority": true,
+      "wait": 23,
+      "items": [
+        {
+          "menuId": "m05",
+          "qty": 3
+        }
+      ],
+      "note": "Mang món cùng lúc"
+    },
+    {
+      "id": "MM-2406",
+      "table": "B02",
+      "createdAt": "18:18",
+      "status": "served",
+      "priority": false,
+      "wait": 26,
+      "items": [
+        {
+          "menuId": "m06",
+          "qty": 2
+        },
+        {
+          "menuId": "m07",
+          "qty": 1
+        }
+      ],
+      "note": ""
+    },
+    {
+      "id": "MM-2405",
+      "table": "S01",
+      "createdAt": "18:08",
+      "status": "cancelled",
+      "priority": false,
+      "wait": 8,
+      "items": [
+        {
+          "menuId": "m02",
+          "qty": 1
+        }
+      ],
+      "note": "Khách đổi lịch"
+    }
+  ],
+  "tables": [
+    {
+      "id": "A01",
+      "zone": "Cửa sổ",
+      "seats": 2,
+      "status": "available"
+    },
+    {
+      "id": "A02",
+      "zone": "Cửa sổ",
+      "seats": 4,
+      "status": "occupied"
+    },
+    {
+      "id": "A03",
+      "zone": "Cửa sổ",
+      "seats": 4,
+      "status": "reserved"
+    },
+    {
+      "id": "A04",
+      "zone": "Cửa sổ",
+      "seats": 2,
+      "status": "available"
+    },
+    {
+      "id": "A05",
+      "zone": "Cửa sổ",
+      "seats": 6,
+      "status": "cleaning"
+    },
+    {
+      "id": "A06",
+      "zone": "Cửa sổ",
+      "seats": 4,
+      "status": "occupied"
+    },
+    {
+      "id": "B01",
+      "zone": "Vườn",
+      "seats": 4,
+      "status": "available"
+    },
+    {
+      "id": "B02",
+      "zone": "Vườn",
+      "seats": 6,
+      "status": "occupied"
+    },
+    {
+      "id": "B03",
+      "zone": "Vườn",
+      "seats": 2,
+      "status": "available"
+    },
+    {
+      "id": "B04",
+      "zone": "Vườn",
+      "seats": 4,
+      "status": "occupied"
+    },
+    {
+      "id": "C01",
+      "zone": "Riêng",
+      "seats": 8,
+      "status": "occupied"
+    },
+    {
+      "id": "S01",
+      "zone": "Quầy",
+      "seats": 1,
+      "status": "available"
+    }
+  ],
+  "feedback": [
+    {
+      "id": "f01",
+      "table": "A02",
+      "rating": 5,
+      "text": "Cá hồi ngon, nhân viên giải thích món rất kỹ.",
+      "theme": "Món ăn",
+      "status": "new"
+    },
+    {
+      "id": "f02",
+      "table": "C01",
+      "rating": 3,
+      "text": "Đồ ăn ổn nhưng chờ món chính hơi lâu.",
+      "theme": "Thời gian chờ",
+      "status": "new"
+    },
+    {
+      "id": "f03",
+      "table": "B02",
+      "rating": 5,
+      "text": "Không gian vườn dễ chịu, món chay nhiều lựa chọn.",
+      "theme": "Không gian",
+      "status": "replied",
+      "reply": "MenuMind xin chân thành cảm ơn quý khách! Rất vui vì quý khách đã có trải nghiệm thư thái tại sân vườn nhà hàng.",
+      "repliedAt": "2026-10-26T20:15:00Z"
+    },
+    {
+      "id": "f04",
+      "table": "A06",
+      "rating": 4,
+      "text": "Mì Quảng đậm vị nhưng hơi cay với trẻ nhỏ.",
+      "theme": "Khẩu vị",
+      "status": "new"
+    },
+    {
+      "id": "f05",
+      "table": "B04",
+      "rating": 2,
+      "text": "Phải nhắc hai lần mới có thêm nước lọc.",
+      "theme": "Phục vụ",
+      "status": "new"
+    }
+  ],
+  "staff": [
+    {
+      "id": "u01",
+      "name": "Minh Anh",
+      "email": "minhanh@menumind.vn",
+      "role": "kitchen",
+      "status": "active",
+      "shift": "Chiều"
+    },
+    {
+      "id": "u02",
+      "name": "Quốc Bảo",
+      "email": "quocbao@menumind.vn",
+      "role": "kitchen",
+      "status": "active",
+      "shift": "Tối"
+    },
+    {
+      "id": "u03",
+      "name": "Thu Hà",
+      "email": "thuha@menumind.vn",
+      "role": "manager",
+      "status": "active",
+      "shift": "Cả ngày"
+    },
+    {
+      "id": "u04",
+      "name": "Hoàng Nam",
+      "email": "hoangnam@menumind.vn",
+      "role": "admin",
+      "status": "active",
+      "shift": "Cả ngày"
+    },
+    {
+      "id": "u05",
+      "name": "Linh Chi",
+      "email": "linhchi@menumind.vn",
+      "role": "service",
+      "status": "inactive",
+      "shift": "Sáng"
+    }
+  ]
+}

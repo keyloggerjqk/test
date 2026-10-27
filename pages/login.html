@@ -1,0 +1,73 @@
+<!doctype html>
+<html lang="vi">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="Đăng nhập theo vai trò MenuMind.">
+    <title>Đăng nhập · MenuMind</title>
+    <link rel="stylesheet" href="../css/common.css">
+    <link rel="stylesheet" href="../css/header.css">
+    <link rel="stylesheet" href="../css/login.css">
+    <script src="../js/database.js" defer></script>
+    <script src="../js/common.js" defer></script>
+    <script src="../js/header.js" defer></script>
+    <script src="../js/login.js" defer></script>
+</head>
+
+<body data-root=".." data-page="login" data-title="Đăng nhập">
+    <header class="site-header">
+        <a class="skip-link" href="#main-content">Bỏ qua điều hướng</a>
+        <div class="brand"><span class="brand-mark" aria-hidden="true">M</span><span>MenuMind</span></div>
+        <button class="nav-toggle" type="button" aria-expanded="false" aria-controls="global-nav">
+            <span aria-hidden="true">☰</span>
+            <span class="sr-only">Mở điều hướng</span>
+        </button>
+        <nav id="global-nav" class="global-nav" aria-label="Điều hướng chính">
+            <a href="../index.html#qr-order">Gọi món bằng QR</a>
+            <a href="diner-order-status.html">Theo dõi đơn</a>
+            <a href="login.html">Khu vực nhân viên</a>
+        </nav>
+        <a class="role-pill" href="login.html" aria-label="Đổi vai trò"><span class="pulse-dot"></span>Đăng nhập</a>
+    </header>
+
+    <main id="main-content" class="site-main">
+        <div class="auth-layout">
+            <section>
+                <p class="kicker">Không gian vận hành MenuMind</p>
+                <h1>Một tài khoản.<br>Đúng khu vực làm việc.</h1>
+                <p>Đăng nhập bằng tài khoản nhà hàng. MenuMind tự nhận diện vai trò và đưa bạn đến đúng bảng điều phối.</p>
+                <div class="flow-line">
+                    <span>Đăng nhập</span>
+                    <i></i>
+                    <span>Nhận diện vai trò</span>
+                    <i></i>
+                    <span>Mở không gian làm việc</span>
+                </div>
+            </section>
+            <section class="auth-panel" aria-labelledby="login-title">
+                <h2 id="login-title">Đăng nhập nhân viên</h2>
+                <form id="login-form" class="login-form">
+                    <label>
+                        Email công việc
+                        <input name="email" type="email" autocomplete="username" required placeholder="ten@nhahang.vn">
+                    </label>
+                    <label>
+                        Mật khẩu
+                        <input name="password" type="password" autocomplete="current-password" minlength="6" required placeholder="Nhập mật khẩu">
+                    </label>
+                    <button class="button primary full" type="submit">Đăng nhập</button>
+                    <div id="login-feedback" class="form-feedback" aria-live="polite"></div>
+                </form>
+                <p class="privacy-note">Quyền truy cập được kiểm soát theo vai trò tài khoản trên hệ thống.</p>
+            </section>
+        </div>
+    </main>
+
+    <footer class="site-footer">
+        <span>MenuMind · vận hành thông minh, phục vụ có nhịp</span>
+        <span>Hệ thống vận hành nhà hàng</span>
+    </footer>
+</body>
+
+</html>

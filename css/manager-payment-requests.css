@@ -1,0 +1,125 @@
+.metric-strip {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  margin-block-end: 26px;
+  border: 1px solid var(--line);
+  background: var(--surface);
+}
+
+.metric-strip>div {
+  display: grid;
+  gap: 4px;
+  padding: 18px 22px;
+  border-inline-end: 1px solid var(--line);
+}
+
+.metric-strip>div:last-child {
+  border: 0;
+}
+
+.metric-strip span {
+  color: var(--muted);
+  font-size: .68rem;
+}
+
+.metric-strip strong {
+  font: 800 1.8rem Manrope, sans-serif;
+}
+
+.table-tools {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin-block-end: 30px;
+}
+
+.responsive-table {
+  overflow-x: auto;
+}
+
+.avatar {
+  display: grid;
+  place-items: center;
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  color: var(--leaf);
+  background: var(--blue-soft);
+  font-weight: 800;
+}
+
+.table-empty-state {
+  display: grid;
+  justify-items: center;
+  gap: 5px;
+  padding: 28px;
+  text-align: center;
+}
+
+.table-empty-state span {
+  color: var(--muted);
+}
+
+.payment-table-code {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 1.1rem;
+}
+
+.payment-completed-time {
+  color: var(--muted);
+  font-size: .8rem;
+}
+
+@media (max-width: 640px) {
+  .metric-strip {
+    grid-template-columns: 1fr 1fr;
+  }
+
+  .metric-strip>div:nth-child(2) {
+    border-inline-end: 0;
+  }
+
+  .metric-strip>div {
+    border-block-end: 1px solid var(--line);
+  }
+
+  .responsive-table table,
+  .responsive-table tbody,
+  .responsive-table tr,
+  .responsive-table td {
+    display: block;
+  }
+
+  .responsive-table thead {
+    display: none;
+  }
+
+  .responsive-table tr {
+    padding: 12px;
+    margin-block-end: 10px;
+    border: 1px solid var(--line);
+  }
+
+  .responsive-table td {
+    display: flex;
+    justify-content: space-between;
+    gap: 20px;
+    padding: 10px 4px;
+  }
+
+  .responsive-table td::before {
+    content: attr(data-label);
+    color: var(--muted);
+    font-size: .68rem;
+  }
+
+  .responsive-table td:first-child {
+    display: block;
+  }
+
+  .responsive-table td:first-child::before {
+    display: none;
+  }
+}

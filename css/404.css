@@ -1,0 +1,66 @@
+.not-found {
+  display: grid;
+  justify-items: center;
+  min-height: 650px;
+  align-content: center;
+  text-align: center;
+}
+
+.not-found>p {
+  max-width: 520px;
+}
+
+.lost-plate {
+  display: flex;
+  align-items: center;
+  margin-block-end: 18px;
+  font: 800 clamp(5rem, 12vw, 10rem) Manrope, sans-serif;
+  line-height: 1;
+}
+
+.lost-plate i {
+  display: grid;
+  place-items: center;
+  width: clamp(110px, 16vw, 180px);
+  aspect-ratio: 1;
+  border: 18px solid white;
+  border-radius: 50%;
+  background: var(--lime);
+  font-size: clamp(2.5rem, 6vw, 5rem);
+  font-style: normal;
+  box-shadow: var(--shadow);
+}
+
+.not-found form {
+  display: flex;
+  gap: 10px;
+  width: min(560px, 100%);
+  margin-block: 20px;
+}
+
+.search-field {
+  display: flex;
+  flex: 1;
+  align-items: center;
+  min-width: 230px;
+  padding-inline: 12px;
+  border: 1px solid var(--line);
+  border-radius: 8px;
+  background: var(--surface);
+}
+
+.search-field input {
+  border: 0;
+  box-shadow: none;
+  background: transparent;
+}
+
+@media (max-width: 640px) {
+  .not-found form {
+    flex-direction: column;
+  }
+
+  .lost-plate i {
+    border-width: 12px;
+  }
+}

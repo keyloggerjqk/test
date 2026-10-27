@@ -1,0 +1,108 @@
+<!doctype html>
+<html lang="vi">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="Cảnh báo thời gian chờ bếp và dự báo tải - MenuMind.">
+    <title>Cảnh báo chờ bếp · MenuMind</title>
+    <link rel="stylesheet" href="../css/common.css">
+    <link rel="stylesheet" href="../css/header.css">
+    <link rel="stylesheet" href="../css/kitchen-wait-time-alerts.css">
+    <script src="../js/database.js" defer></script>
+    <script src="../js/common.js" defer></script>
+    <script src="../js/header.js" defer></script>
+    <script src="../js/kitchen-wait-time-alerts.js" defer></script>
+</head>
+
+<body data-root=".." data-page="kitchen-alerts" data-title="Cảnh báo chờ bếp">
+    <header class="site-header">
+        <a class="skip-link" href="#main-content">Bỏ qua điều hướng</a>
+        <div class="brand"><span class="brand-mark" aria-hidden="true">M</span><span>MenuMind</span></div>
+        <button class="nav-toggle" type="button" aria-expanded="false" aria-controls="global-nav">
+            <span aria-hidden="true">☰</span>
+            <span class="sr-only">Mở điều hướng</span>
+        </button>
+        <nav id="global-nav" class="global-nav" aria-label="Điều hướng chính">
+            <a href="../index.html#qr-order">Gọi món bằng QR</a>
+            <a href="diner-order-status.html">Theo dõi đơn</a>
+            <a href="login.html">Khu vực nhân viên</a>
+        </nav>
+        <a class="role-pill" href="login.html" aria-label="Đổi vai trò"><span class="pulse-dot"></span>Bếp nóng</a>
+    </header>
+
+    <div class="page-frame">
+        <aside>
+        <nav class="side-nav" aria-label="Điều hướng kitchen">
+            <p>Không gian làm việc</p>
+            <a href="kitchen-board.html"><span aria-hidden="true">⌁</span>Bảng đơn</a>
+            <a href="kitchen-order-detail.html"><span aria-hidden="true">⌁</span>Chi tiết đơn</a>
+            <a class="active" href="kitchen-wait-time-alerts.html"><span aria-hidden="true">⌁</span>Cảnh báo chờ</a>
+            <a href="login.html"><span aria-hidden="true">↗</span>Đổi vai trò</a>
+        </nav>
+    </aside>
+
+    <main id="main-content" class="site-main">
+        <div id="kitchen-alerts-wrapper">
+            <header class="page-head">
+                <div>
+                    <p class="kicker">Theo dõi rủi ro</p>
+                    <h1>Cảnh báo thời gian chờ</h1>
+                    <p>AI ước tính tải bếp, nhưng trưởng ca là người quyết định thứ tự ưu tiên.</p>
+                </div>
+            </header>
+
+            <div class="content-grid wide-right">
+                <section>
+                    <div class="section-title compact">
+                        <div>
+                            <p class="kicker">Cần hành động</p>
+                            <h2 id="alert-summary-title">Đơn vượt ngưỡng</h2>
+                        </div>
+                        <label class="compact-field">
+                            Ngưỡng
+                            <select id="alert-threshold">
+                                <option value="10">10 phút</option>
+                                <option value="15" selected>15 phút</option>
+                                <option value="20">20 phút</option>
+                            </select>
+                        </label>
+                    </div>
+                    <div id="alert-list">
+                        <!-- Danh sách các đơn chờ lâu -->
+                    </div>
+                </section>
+
+                <aside class="ai-panel">
+                    <div class="ai-head">
+                        <span>✦</span>
+                        <div>
+                            <p>Kitchen Load Predictor</p>
+                            <h2>Dự báo tải 30 phút tới</h2>
+                        </div>
+                    </div>
+                    <form id="load-form">
+                        <label>
+                            Số đơn dự kiến
+                            <input name="orders" type="number" min="1" max="50" value="12" required>
+                        </label>
+                        <label>
+                            Nhân sự trong ca
+                            <input name="staff" type="number" min="1" max="20" value="4" required>
+                        </label>
+                        <button class="button ai" type="submit">✦ Chạy dự báo</button>
+                    </form>
+                    <div id="load-result" class="ai-result" aria-live="polite"></div>
+                </aside>
+            </div>
+        </div>
+    </main>
+    </div>
+
+    <footer class="site-footer">
+        <span>MenuMind · vận hành thông minh, phục vụ có nhịp</span>
+        <span>Hệ thống vận hành nhà hàng</span>
+    </footer>
+</body>
+
+</html>

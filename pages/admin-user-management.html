@@ -1,0 +1,181 @@
+<!doctype html>
+<html lang="vi">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="Quản lý tài khoản nhân sự và phân quyền vai trò - MenuMind.">
+    <title>Tài khoản · MenuMind</title>
+    <link rel="stylesheet" href="../css/common.css">
+    <link rel="stylesheet" href="../css/header.css">
+    <link rel="stylesheet" href="../css/admin-user-management.css">
+    <script src="../js/database.js" defer></script>
+    <script src="../js/common.js" defer></script>
+    <script src="../js/header.js" defer></script>
+    <script src="../js/admin-user-management.js" defer></script>
+</head>
+
+<body data-root=".." data-page="admin-users" data-title="Tài khoản">
+<!-- ==========================================================================
+     PHÂN VÙNG GIAO DIỆN - QUẢN LÝ TÀI KHOẢN NHÂN SỰ (S15)
+     • VÙNG 1: Header hệ thống & Điều hướng bên (Sidebar Navigation)
+     • VÙNG 2: Tiêu đề trang & Nút mở hộp thoại (+ Thêm nhân viên)
+     • VÙNG 3: Thanh công cụ lọc tìm kiếm & Bộ đếm nhân sự động
+     • VÙNG 4: Bảng danh sách nhân sự & Khối thông báo rỗng (Empty State)
+     • VÙNG 5: Hộp thoại Modal & Form thêm mới tài khoản (Validation)
+========================================================================== -->
+
+    <!-- ====================================================================== -->
+    <!-- VÙNG 1: HEADER HỆ THỐNG & ĐIỀU HƯỚNG TỔNG QUAN                         -->
+    <!-- ====================================================================== -->
+    <header class="site-header">
+        <a class="skip-link" href="#main-content">Bỏ qua điều hướng</a>
+        <div class="brand"><span class="brand-mark" aria-hidden="true">M</span><span>MenuMind</span></div>
+        <button class="nav-toggle" type="button" aria-expanded="false" aria-controls="global-nav">
+            <span aria-hidden="true">☰</span>
+            <span class="sr-only">Mở điều hướng</span>
+        </button>
+        <nav id="global-nav" class="global-nav" aria-label="Điều hướng chính">
+            <a href="../index.html#qr-order">Gọi món bằng QR</a>
+            <a href="diner-order-status.html">Theo dõi đơn</a>
+            <a href="login.html">Khu vực nhân viên</a>
+        </nav>
+        <a class="role-pill" href="login.html" aria-label="Đổi vai trò"><span class="pulse-dot"></span>Quản trị</a>
+    </header>
+
+    <div class="page-frame">
+        <aside>
+            <nav class="side-nav" aria-label="Điều hướng admin">
+                <p>Không gian làm việc</p>
+                <a class="active" href="admin-user-management.html"><span aria-hidden="true">□</span>Tài khoản</a>
+                <a href="manager-payment-requests.html"><span aria-hidden="true">□</span>Thanh toán</a>
+                <a href="admin-sales-insights.html"><span aria-hidden="true">□</span>Bán hàng</a>
+                <a href="manager-feedback-center.html"><span aria-hidden="true">□</span>Phản hồi</a>
+                <a href="admin-settings.html"><span aria-hidden="true">□</span>Cài đặt</a>
+                <a href="login.html"><span aria-hidden="true">↗</span>Đổi vai trò</a>
+            </nav>
+        </aside>
+
+        <main id="main-content" class="site-main">
+            <!-- ============================================================== -->
+            <!-- VÙNG 2: TIÊU ĐỀ TRANG & NÚT HÀNH ĐỘNG CHÍNH (+ Thêm nhân viên)-->
+            <!-- ============================================================== -->
+            <header class="page-head">
+                <div>
+                    <p class="kicker">Phân quyền nhân sự</p>
+                    <h1>Quản lý tài khoản</h1>
+                    <p>Tạo tài khoản, gán vai trò và kiểm soát quyền truy cập hệ thống.</p>
+                </div>
+                <div class="head-actions">
+                    <button class="button primary" data-open="user-dialog" type="button" aria-haspopup="dialog">+ Thêm nhân viên</button>
+                </div>
+            </header>
+
+            <!-- ============================================================== -->
+            <!-- VÙNG 3: THANH CÔNG CỤ TÌM KIẾM, BỘ LỌC ĐA TIÊU CHÍ & SỐ ĐẾM    -->
+            <!-- Chức năng: Tìm kiếm họ tên/email + Lọc vai trò + Lọc trạng thái-->
+            <!-- ============================================================== -->
+            <section class="surface">
+                <div id="directory-warning-slot" aria-live="polite"></div>
+                <div class="table-tools">
+                    <label class="search-field" for="user-search">
+                        <span class="sr-only">Tìm kiếm nhân viên</span>
+                        <span aria-hidden="true">⌕</span>
+                        <input id="user-search" type="search" placeholder="Tìm tên hoặc email..." aria-label="Tìm kiếm theo tên hoặc email">
+                    </label>
+                    <label class="compact-field" for="user-role-filter">
+                        <span>Vai trò</span>
+                        <select id="user-role-filter" aria-label="Lọc theo vai trò">
+                            <option value="all">Tất cả vai trò</option>
+                            <option value="kitchen">Bếp</option>
+                            <option value="manager">Quản lý</option>
+                            <option value="service">Phục vụ</option>
+                            <option value="admin">Quản trị</option>
+                        </select>
+                    </label>
+                    <label class="compact-field" for="user-status-filter">
+                        <span>Trạng thái</span>
+                        <select id="user-status-filter" aria-label="Lọc theo trạng thái">
+                            <option value="all">Tất cả trạng thái</option>
+                            <option value="active">Đang hoạt động</option>
+                            <option value="inactive">Đã vô hiệu hóa</option>
+                        </select>
+                    </label>
+                </div>
+
+                <!-- Bộ đếm động cập nhật số lượng nhân sự hiển thị -->
+                <div class="table-meta">
+                    <span id="user-count-badge" class="result-count" aria-live="polite">Đang tải danh sách nhân viên...</span>
+                </div>
+
+                <!-- ========================================================== -->
+                <!-- VÙNG 4: BẢNG DANH SÁCH NHÂN SỰ & EMPTY STATE (JS RENDER)  -->
+                <!-- Chức năng: Danh sách nhân viên, vai trò, ca làm, kích hoạt -->
+                <!-- ========================================================== -->
+                <div id="user-table" class="responsive-table" aria-live="polite">
+                    <!-- Bảng danh sách nhân viên render bởi JavaScript -->
+                </div>
+            </section>
+
+            <!-- ============================================================== -->
+            <!-- VÙNG 5: HỘP THOẠI MODAL & BIỂU MẪU TẠO TÀI KHOẢN MỚI          -->
+            <!-- Chức năng: Form nhập liệu, kiểm tra định dạng email & chống trùng-->
+            <!-- ============================================================== -->
+            <dialog id="user-dialog" aria-labelledby="dialog-title">
+                <div class="dialog-head">
+                    <h2 id="dialog-title">Thêm nhân viên mới</h2>
+                    <button class="icon-button" data-close="user-dialog" type="button" aria-label="Đóng hộp thoại">×</button>
+                </div>
+                <form id="add-user-form" class="dialog-body" novalidate>
+                    <!-- Trường Họ và tên -->
+                    <div class="form-field">
+                        <label for="add-user-name">Họ và tên <span class="required" aria-hidden="true">*</span></label>
+                        <input id="add-user-name" name="name" type="text" placeholder="Ví dụ: Nguyễn Văn An" minlength="3" required aria-describedby="err-name">
+                        <span class="field-error" id="err-name" role="alert"></span>
+                    </div>
+
+                    <!-- Trường Email -->
+                    <div class="form-field">
+                        <label for="add-user-email">Email <span class="required" aria-hidden="true">*</span></label>
+                        <input id="add-user-email" name="email" type="email" placeholder="Ví dụ: vanan@menumind.vn" required aria-describedby="err-email">
+                        <span class="field-error" id="err-email" role="alert"></span>
+                    </div>
+
+                    <!-- Nhóm trường Phân quyền vai trò & Ca làm việc -->
+                    <div class="form-grid">
+                        <div class="form-field">
+                            <label for="add-user-role">Vai trò</label>
+                            <select id="add-user-role" name="role">
+                                <option value="kitchen">Bếp</option>
+                                <option value="manager">Quản lý</option>
+                                <option value="service">Phục vụ</option>
+                                <option value="admin">Quản trị</option>
+                            </select>
+                        </div>
+                        <div class="form-field">
+                            <label for="add-user-shift">Ca làm việc</label>
+                            <select id="add-user-shift" name="shift">
+                                <option value="Sáng (06:00 - 14:00)">Sáng (06:00 - 14:00)</option>
+                                <option value="Chiều (14:00 - 22:00)">Chiều (14:00 - 22:00)</option>
+                                <option value="Linh hoạt">Linh hoạt</option>
+                            </select>
+                        </div>
+                    </div>
+
+                    <!-- Nút hành động -->
+                    <div class="dialog-actions">
+                        <button class="button quiet" type="button" data-close="user-dialog">Hủy</button>
+                        <button class="button primary" id="btn-save-user" type="submit">Lưu tài khoản</button>
+                    </div>
+                </form>
+            </dialog>
+        </main>
+    </div>
+
+    <footer class="site-footer">
+        <span>MenuMind · vận hành thông minh, phục vụ có nhịp</span>
+        <span>Hệ thống vận hành nhà hàng</span>
+    </footer>
+</body>
+
+</html>

@@ -1,0 +1,106 @@
+<!doctype html>
+<html lang="vi">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="Chi tiết đơn và danh sách chế biến món - MenuMind.">
+    <title>Chi tiết đơn bếp · MenuMind</title>
+    <link rel="stylesheet" href="../css/common.css">
+    <link rel="stylesheet" href="../css/header.css">
+    <link rel="stylesheet" href="../css/kitchen-order-detail.css">
+    <script src="../js/database.js" defer></script>
+    <script src="../js/common.js" defer></script>
+    <script src="../js/header.js" defer></script>
+    <script src="../js/kitchen-order-detail.js" defer></script>
+</head>
+
+<body data-root=".." data-page="kitchen-detail" data-title="Chi tiết đơn bếp">
+    <header class="site-header">
+        <a class="skip-link" href="#main-content">Bỏ qua điều hướng</a>
+        <div class="brand"><span class="brand-mark" aria-hidden="true">M</span><span>MenuMind</span></div>
+        <button class="nav-toggle" type="button" aria-expanded="false" aria-controls="global-nav">
+            <span aria-hidden="true">☰</span>
+            <span class="sr-only">Mở điều hướng</span>
+        </button>
+        <nav id="global-nav" class="global-nav" aria-label="Điều hướng chính">
+            <a href="../index.html#qr-order">Gọi món bằng QR</a>
+            <a href="diner-order-status.html">Theo dõi đơn</a>
+            <a href="login.html">Khu vực nhân viên</a>
+        </nav>
+        <a class="role-pill" href="login.html" aria-label="Đổi vai trò"><span class="pulse-dot"></span>Bếp nóng</a>
+    </header>
+
+    <div class="page-frame">
+        <aside>
+        <nav class="side-nav" aria-label="Điều hướng kitchen">
+            <p>Không gian làm việc</p>
+            <a href="kitchen-board.html"><span aria-hidden="true">⌁</span>Bảng đơn</a>
+            <a class="active" href="kitchen-order-detail.html"><span aria-hidden="true">⌁</span>Chi tiết đơn</a>
+            <a href="kitchen-wait-time-alerts.html"><span aria-hidden="true">⌁</span>Cảnh báo chờ</a>
+            <a href="login.html"><span aria-hidden="true">↗</span>Đổi vai trò</a>
+        </nav>
+    </aside>
+
+    <main id="main-content" class="site-main">
+        <div id="kitchen-detail-wrapper">
+            <header class="page-head">
+                <div>
+                    <p class="kicker">Chi tiết đơn</p>
+                    <h1>Kiểm tra và chuẩn bị món</h1>
+                    <p>Kiểm tra ghi chú món trước khi cập nhật trạng thái chế biến.</p>
+                </div>
+                <div class="head-actions">
+                    <a class="button quiet" href="kitchen-board.html">Về bảng bếp</a>
+                </div>
+            </header>
+
+            <div class="detail-layout">
+                <section class="surface">
+                    <div class="section-title compact">
+                        <div>
+                            <p class="kicker">Danh sách chế biến</p>
+                            <h2>Các món trong đơn</h2>
+                        </div>
+                    </div>
+                    <div id="prep-item-list">
+                        <!-- Danh sách các món cần nấu -->
+                    </div>
+                    <div class="order-note">
+                        <strong>Ghi chú chung</strong>
+                        <p id="order-general-note">Không có ghi chú</p>
+                    </div>
+                </section>
+
+                <aside class="order-panel">
+                    <p class="kicker">Tiến độ đơn</p>
+                    <h2 id="order-wait-display">0 phút chờ</h2>
+                    <label>
+                        Chuyển trạng thái
+                        <select id="order-status">
+                            <option value="new">Mới nhận</option>
+                            <option value="cooking">Đang nấu</option>
+                            <option value="ready">Chờ phục vụ</option>
+                            <option value="served">Đã phục vụ</option>
+                            <option value="cancelled">Đã hủy</option>
+                        </select>
+                    </label>
+                    <label>
+                        Ghi chú nội bộ
+                        <textarea id="kitchen-note" rows="3" placeholder="Thông báo cho ca sau..."></textarea>
+                    </label>
+                    <button class="button primary full" id="save-order-btn">Lưu cập nhật</button>
+                    <button class="button quiet full" id="priority-order-btn">Đánh dấu ưu tiên</button>
+                </aside>
+            </div>
+        </div>
+    </main>
+    </div>
+
+    <footer class="site-footer">
+        <span>MenuMind · vận hành thông minh, phục vụ có nhịp</span>
+        <span>Hệ thống vận hành nhà hàng</span>
+    </footer>
+</body>
+
+</html>

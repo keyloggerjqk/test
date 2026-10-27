@@ -1,0 +1,187 @@
+<!doctype html>
+<html lang="vi">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="Trung tâm phản hồi và đánh giá từ thực khách - MenuMind.">
+    <title>Phản hồi · MenuMind</title>
+    <link rel="stylesheet" href="../css/common.css">
+    <link rel="stylesheet" href="../css/header.css">
+    <link rel="stylesheet" href="../css/manager-feedback-center.css">
+    <script src="../js/database.js" defer></script>
+    <script src="../js/common.js" defer></script>
+    <script src="../js/header.js" defer></script>
+    <script src="../js/manager-feedback-center.js" defer></script>
+</head>
+
+<body data-root=".." data-page="manager-feedback" data-title="Phản hồi">
+<!-- ==========================================================================
+     PHÂN VÙNG GIAO DIỆN - TRUNG TÂM PHẢN HỒI & AI-3 (S14)
+     • VÙNG 1: Header hệ thống & Điều hướng bên (Sidebar Navigation)
+     • VÙNG 2: Tiêu đề trang Trung tâm phản hồi
+     • VÙNG 3: Bảng chỉ số tổng quan đánh giá (Stars & Satisfaction Bar)
+     • VÙNG 4: Danh sách phản hồi của thực khách kèm trạng thái
+     • VÙNG 5: Bảng điều khiển phân tích AI (Feedback Theme Extractor)
+========================================================================== -->
+
+    <!-- ====================================================================== -->
+    <!-- VÙNG 1: HEADER HỆ THỐNG & ĐIỀU HƯỚNG TỔNG QUAN                         -->
+    <!-- ====================================================================== -->
+    <header class="site-header">
+        <a class="skip-link" href="#main-content">Bỏ qua điều hướng</a>
+        <div class="brand"><span class="brand-mark" aria-hidden="true">M</span><span>MenuMind</span></div>
+        <button class="nav-toggle" type="button" aria-expanded="false" aria-controls="global-nav">
+            <span aria-hidden="true">☰</span>
+            <span class="sr-only">Mở điều hướng</span>
+        </button>
+        <nav id="global-nav" class="global-nav" aria-label="Điều hướng chính">
+            <a href="../index.html#qr-order">Gọi món bằng QR</a>
+            <a href="diner-order-status.html">Theo dõi đơn</a>
+            <a href="login.html">Khu vực nhân viên</a>
+        </nav>
+        <a class="role-pill" href="login.html" aria-label="Đổi vai trò"><span class="pulse-dot"></span>Quản lý</a>
+    </header>
+
+    <div class="page-frame">
+        <aside>
+            <nav class="side-nav" aria-label="Điều hướng manager">
+                <p>Không gian làm việc</p>
+                <a href="manager-table-management.html"><span aria-hidden="true">◇</span>Bàn ăn</a>
+                <a href="manager-menu-management.html"><span aria-hidden="true">◇</span>Thực đơn</a>
+                <a href="manager-payment-requests.html"><span aria-hidden="true">◇</span>Thanh toán</a>
+                <a class="active" href="manager-feedback-center.html"><span aria-hidden="true">◇</span>Phản hồi</a>
+                <a href="login.html"><span aria-hidden="true">↗</span>Đổi vai trò</a>
+            </nav>
+        </aside>
+
+        <main id="main-content" class="site-main">
+            <!-- ============================================================== -->
+            <!-- VÙNG 2: TIÊU ĐỀ TRANG TRUNG TÂM PHẢN HỒI                      -->
+            <!-- ============================================================== -->
+            <header class="page-head">
+                <div>
+                    <p class="kicker">Tiếng nói thực khách</p>
+                    <h1>Trung tâm phản hồi</h1>
+                    <p>Theo dõi vấn đề, phản hồi khách và khai phá chủ đề nhận xét bằng trí tuệ nhân tạo.</p>
+                </div>
+            </header>
+
+            <div class="content-grid wide-right">
+                <section>
+                    <!-- ========================================================== -->
+                    <!-- VÙNG 3: BỘ CHỈ SỐ THỐNG KÊ ĐÁNH GIÁ (FEEDBACK SUMMARY)     -->
+                    <!-- Chức năng: Thể hiện điểm sao TB, tỷ lệ tích cực, cần cải thiện -->
+                    <!-- ========================================================== -->
+                    <div class="feedback-summary">
+                        <div>
+                            <strong id="avg-rating">4,8</strong>
+                            <span id="avg-stars" aria-label="Đánh giá trung bình 4.8 trên 5 sao">★★★★★</span>
+                            <small id="feedback-count">10 phản hồi</small>
+                        </div>
+                        <div>
+                            <p>Tích cực (4 - 5 sao)</p>
+                            <strong id="positive-percent">90%</strong>
+                            <i><span id="positive-bar" style="width:90%"></span></i>
+                        </div>
+                        <div>
+                            <p>Cần cải thiện (≤ 3 sao)</p>
+                            <strong id="negative-percent">10%</strong>
+                            <i><span id="negative-bar" style="width:10%"></span></i>
+                        </div>
+                    </div>
+
+                    <!-- ========================================================== -->
+                    <!-- VÙNG 4: DANH SÁCH NHẬN XÉT CỦA KHÁCH HÀNG (FEEDBACK LIST)  -->
+                    <!-- Chức năng: Đọc phản hồi bàn, số sao, chủ đề và gửi lời cảm ơn -->
+                    <!-- ========================================================== -->
+                    <div id="feedback-list" aria-live="polite">
+                        <!-- Danh sách nhận xét render bởi JavaScript -->
+                    </div>
+                </section>
+
+                <!-- ============================================================== -->
+                <!-- VÙNG 5: KHU VỰC TÍNH NĂNG TRÍ TUỆ NHÂN TẠO (AI-3 THEME PANEL) -->
+                <!-- Chức năng: Phân tích NLP, độ tin cậy, giải trình và kiểm soát  -->
+                <!-- ============================================================== -->
+                <aside class="ai-panel" aria-labelledby="ai-panel-title">
+                    <div class="ai-head">
+                        <span aria-hidden="true">✦</span>
+                        <div>
+                            <p>AI-3: FEEDBACK THEME EXTRACTOR</p>
+                            <h2 id="ai-panel-title">Khai phá chủ đề bằng AI</h2>
+                        </div>
+                    </div>
+
+                    <!-- Biểu mẫu nhập mục tiêu phân tích AI -->
+                    <form id="theme-form" novalidate>
+                        <div class="form-field">
+                            <label for="theme-source">Nguồn dữ liệu phân tích</label>
+                            <select id="theme-source" name="source" aria-label="Chọn nguồn dữ liệu phân tích">
+                                <option value="all">Tất cả phản hồi mới</option>
+                                <option value="low">Chỉ đánh giá cần cải thiện (≤ 3 sao)</option>
+                            </select>
+                        </div>
+                        <div class="form-field">
+                            <label for="theme-goal">Mục tiêu phân tích</label>
+                            <input id="theme-goal" name="goal" placeholder="Ví dụ: tìm vấn đề cần xử lý tuần này..." required aria-label="Mục tiêu phân tích AI">
+                        </div>
+                        <button class="button ai" id="btn-run-ai" type="submit">✦ Phân tích chủ đề</button>
+                    </form>
+
+                    <!-- Khung kết quả phân tích AI (Loading / Failure UX / Output + Explainability) -->
+                    <div id="theme-result" class="ai-result" aria-live="polite">
+                        <!-- Kết quả AI phân tích đủ các bước render tự động bởi JavaScript -->
+                    </div>
+                </aside>
+            </div>
+        </main>
+    </div>
+
+    <!-- ============================================================== -->
+    <!-- HỘP THOẠI PHẢN HỒI THỰC KHÁCH (REPLY FEEDBACK DIALOG)          -->
+    <!-- ============================================================== -->
+    <dialog id="reply-dialog" aria-labelledby="reply-dialog-title">
+        <div class="dialog-head">
+            <div>
+                <p class="kicker">Chăm sóc khách hàng</p>
+                <h2 id="reply-dialog-title">Phản hồi đánh giá thực khách</h2>
+            </div>
+            <button class="icon-button" data-close="reply-dialog" type="button" aria-label="Đóng hộp thoại">×</button>
+        </div>
+        <form id="reply-feedback-form" class="dialog-body" novalidate>
+            <input type="hidden" id="reply-feedback-id" name="id">
+
+            <div class="customer-quote-box">
+                <div class="quote-meta">
+                    <strong id="reply-customer-table">Bàn —</strong>
+                    <span id="reply-customer-stars" aria-label="Số sao">★★★★★</span>
+                </div>
+                <blockquote id="reply-customer-text">“...”</blockquote>
+            </div>
+
+            <div class="form-field">
+                <label for="reply-message">Nội dung phản hồi của Quản lý <span class="required" aria-hidden="true">*</span></label>
+                <p class="field-hint">Chọn câu trả lời mẫu gợi ý nhanh hoặc tự soạn nội dung:</p>
+                <div class="quick-reply-chips">
+                    <button type="button" class="chip-btn" data-reply-template="MenuMind xin chân thành cảm ơn quý khách! Rất mong được tiếp tục phục vụ quý khách trong những bữa ăn tới.">Mẫu: Cảm ơn hài lòng</button>
+                    <button type="button" class="chip-btn" data-reply-template="MenuMind thành thật xin lỗi quý khách vì sự chậm trễ này! Nhà hàng đã chấn chỉnh ca trực và sẽ phục vụ chu đáo hơn lần tới.">Mẫu: Xin lỗi chậm món</button>
+                    <button type="button" class="chip-btn" data-reply-template="MenuMind xin trân trọng ghi nhận góp ý của quý khách về hương vị để cải thiện món ăn ngày một hoàn hảo hơn.">Mẫu: Tiếp thu khẩu vị</button>
+                </div>
+                <textarea id="reply-message" name="reply" rows="4" required placeholder="Nhập câu trả lời gửi đến thực khách..."></textarea>
+            </div>
+
+            <div class="dialog-actions">
+                <button type="button" class="button quiet" data-close="reply-dialog">Đóng</button>
+                <button type="submit" class="button primary" id="btn-save-reply">Gửi phản hồi</button>
+            </div>
+        </form>
+    </dialog>
+
+    <footer class="site-footer">
+        <span>MenuMind · vận hành thông minh, phục vụ có nhịp</span>
+        <span>Hệ thống vận hành nhà hàng</span>
+    </footer>
+</body>
+
+</html>

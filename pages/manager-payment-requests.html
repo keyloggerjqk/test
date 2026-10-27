@@ -1,0 +1,100 @@
+<!doctype html>
+<html lang="vi">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="Danh sách yêu cầu thanh toán tại bàn - MenuMind.">
+    <title>Yêu cầu thanh toán · MenuMind</title>
+    <link rel="stylesheet" href="../css/common.css">
+    <link rel="stylesheet" href="../css/header.css">
+    <link rel="stylesheet" href="../css/manager-payment-requests.css">
+    <script src="../js/database.js" defer></script>
+    <script src="../js/common.js" defer></script>
+    <script src="../js/header.js" defer></script>
+    <script src="../js/manager-payment-requests.js" defer></script>
+</head>
+
+<body data-root=".." data-page="manager-payments" data-title="Yêu cầu thanh toán">
+    <header class="site-header">
+        <a class="skip-link" href="#main-content">Bỏ qua điều hướng</a>
+        <div class="brand"><span class="brand-mark" aria-hidden="true">M</span><span>MenuMind</span></div>
+        <button class="nav-toggle" type="button" aria-expanded="false" aria-controls="global-nav">
+            <span aria-hidden="true">☰</span>
+            <span class="sr-only">Mở điều hướng</span>
+        </button>
+        <nav id="global-nav" class="global-nav" aria-label="Điều hướng chính">
+            <a href="../index.html#qr-order">Gọi món bằng QR</a>
+            <a href="diner-order-status.html">Theo dõi đơn</a>
+            <a href="login.html">Khu vực nhân viên</a>
+        </nav>
+        <a class="role-pill" href="login.html" aria-label="Đổi vai trò"><span class="pulse-dot"></span>Quản lý</a>
+    </header>
+
+    <div class="page-frame">
+        <aside>
+            <nav class="side-nav" aria-label="Điều hướng manager">
+                <p>Không gian làm việc</p>
+                <a href="manager-table-management.html"><span aria-hidden="true">◇</span>Bàn ăn</a>
+                <a href="manager-menu-management.html"><span aria-hidden="true">◇</span>Thực đơn</a>
+                <a class="active" href="manager-payment-requests.html"><span aria-hidden="true">◇</span>Thanh toán</a>
+                <a href="manager-feedback-center.html"><span aria-hidden="true">◇</span>Phản hồi</a>
+                <a href="login.html"><span aria-hidden="true">↗</span>Đổi vai trò</a>
+            </nav>
+        </aside>
+
+        <main id="main-content" class="site-main">
+            <div id="manager-payments-wrapper">
+                <header class="page-head">
+                    <div>
+                        <p class="kicker">Thu ngân tại bàn</p>
+                        <h1>Yêu cầu thanh toán</h1>
+                        <p>Các bàn đang chờ hỗ trợ được đưa lên đầu. Xác nhận chỉ sau khi nhân viên đã thu tiền tại bàn.
+                        </p>
+                    </div>
+                    <div class="head-actions">
+                        <button class="button primary" data-action="refresh-payments">↻ Làm mới</button>
+                    </div>
+                </header>
+
+                <section class="metric-strip payment-metrics">
+                    <div><span>Bàn đang chờ</span><strong id="pending-count">0</strong></div>
+                    <div><span>Tổng cần thu</span><strong id="pending-total">0 ₫</strong></div>
+                    <div><span>Tiền mặt</span><strong id="cash-count">0</strong></div>
+                    <div><span>Thẻ / chuyển khoản</span><strong id="card-count">0</strong></div>
+                </section>
+
+                <section class="surface payment-queue">
+                    <div class="section-title compact">
+                        <div>
+                            <p class="kicker">Cần hỗ trợ ngay</p>
+                            <h2 id="pending-section-title">Bàn bật cờ thanh toán</h2>
+                        </div>
+                    </div>
+                    <div id="pending-payments-table">
+                        <!-- Bảng các bàn đang chờ thanh toán -->
+                    </div>
+                </section>
+
+                <section class="surface payment-history">
+                    <div class="section-title compact">
+                        <div>
+                            <p class="kicker">Đối soát</p>
+                            <h2 id="history-section-title">Lịch sử thanh toán gần đây</h2>
+                        </div>
+                    </div>
+                    <div id="history-payments-table">
+                        <!-- Bảng lịch sử các bàn đã thanh toán -->
+                    </div>
+                </section>
+            </div>
+        </main>
+    </div>
+
+    <footer class="site-footer">
+        <span>MenuMind · vận hành thông minh, phục vụ có nhịp</span>
+        <span>Hệ thống vận hành nhà hàng</span>
+    </footer>
+</body>
+
+</html>

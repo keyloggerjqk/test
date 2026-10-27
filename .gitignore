@@ -1,0 +1,19 @@
+# Python cache
+__pycache__/
+*.pyc
+
+# AI Agent metadata
+.agents/
+skills-lock.json
+
+# IDE & OS
+.vscode/
+.idea/
+.DS_Store
+Thumbs.db
+*.pdf
+
+# Project Brief & Bundles
+BTL-09*.md
+_bundles/
+
